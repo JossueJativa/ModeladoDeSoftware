@@ -1,7 +1,4 @@
 from django.shortcuts import render
-import requests
-
-from .models import usuarios
 
 # Create your views here.
 def index(request):
@@ -21,22 +18,3 @@ def login(request):
     else:
         return render(request, 'login.html')
     
-def get_usuarios(request, params={}):
-    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/swagger/index.html/Usuarios", params=params)
-
-    if url.status_code == 200:
-        url = url.json()
-    else:
-        return render(request, 'exception.html', {
-            "message": "No se pudo conectar con el servidor"
-        })
-    
-    for i in url:
-        usuario = usuarios(username=i['usuario'], password=i['password'])
-        usuario.save()
-
-def tables (request):
-    usuario = usuarios.objects.all()
-    return render(request, 'tables.html', {
-        "usuario": usuario
-    })
