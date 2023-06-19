@@ -15,7 +15,7 @@ def login(request):
             data = url.json()
         except:
             return render(request, 'exception.html', {
-                'message': "Ingreso mal un campo"
+                'message': "Usuario o contraseña incorrectos"
             })
 
         if data[0]['OBSERVACION'] == "INGRESO EXITOSO":
