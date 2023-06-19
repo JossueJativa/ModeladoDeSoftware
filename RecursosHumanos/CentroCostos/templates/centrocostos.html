@@ -5,5 +5,23 @@
 {% endblock  %}
 
 {% block body %}
-    {{data}}
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Nombre de centro de costos</th>
+                <th scope="col">Mensaje</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for datos in data %}
+                <tr>
+                    <th scope="row">{{datos.Codigo}}</th>
+                    <td>{{datos.NombreCentroCostos}}</td>
+                    <td>{{datos.Mensaje}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock  %}
