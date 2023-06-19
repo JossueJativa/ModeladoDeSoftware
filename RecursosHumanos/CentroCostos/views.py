@@ -56,8 +56,7 @@ def agregar(request):
 def elimAtributo(request, id, descripcion):
     if request.method == 'POST':
         try:
-            url = requests.delete("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosDelete?codigocentrocostos="+id+"&descripcioncentrocostos="+descripcion)
-            data = url.json()
+            url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosDelete?codigocentrocostos="+id+"&descripcioncentrocostos="+descripcion)
         except:
             return render(request, 'exception.html', {
                 'message': "Error al eliminar el centro de costos"
