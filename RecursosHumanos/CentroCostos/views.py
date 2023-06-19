@@ -19,7 +19,6 @@ def login(request):
             })
 
         if data[0]['OBSERVACION'] == "INGRESO EXITOSO":
-
             url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSelect")
             data = url.json()
 
