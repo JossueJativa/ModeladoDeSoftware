@@ -36,16 +36,40 @@ def pushCentroCostos (request):
 
         try:
             url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosInsert?codigocentrocostos="+codigo+"&descripcioncentrocostos="+descripcion)
+            data = url.json()
         except:
             return render(request, 'exception.html', {
                 'message': "Error al insertar el centro de costos"
             })
         
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSelect")
+        data = url.json()
         return render(request, 'centrocostos.html',{
-                'message': "Se realizo el envio exitosamente"
+                'data': data,
             })
     else:
         return render(request, 'addCentroDeCostos.html')
     
-def pagCentroCostosadd (request):
-    return render(request, 'addCentroDeCostos.html')
+def agregar(request):
+    return render(request, 'agregar.html')
+
+def eliminar(request, id, descripcion):
+    if request.method == 'POST':
+        try:
+            url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosDelete?codigocentrocostos="+id+"=1&descripcioncentrocostos="+descripcion)
+            data = url.json()
+        except:
+            return render(request, 'exception.html', {
+                'message': "Error al eliminar el centro de costos"
+            })
+        
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSelect")
+        data = url.json()
+        return render(request, 'centrocostos.html',{
+                'data': data,
+            })
+    else:
+        return render(request, 'eliminar.html',{
+            'id': id,
+            'descripcion': descripcion
+        })
