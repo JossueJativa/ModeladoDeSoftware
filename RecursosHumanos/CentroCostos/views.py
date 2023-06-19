@@ -19,8 +19,12 @@ def login(request):
             })
 
         if data[0]['OBSERVACION'] == "INGRESO EXITOSO":
-            return render(request, 'exception.html',{
-                'message': "Ingreso Exitoso"
+
+            url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSelect")
+            data = url.json()
+
+            return render(request, 'centrocostos.html',{
+                'data': data
             })
     else:
         return render(request, 'login.html')
