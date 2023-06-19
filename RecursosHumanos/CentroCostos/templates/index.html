@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Login
+{% endblock  %}
+
+{% block body %}
+    <h1>Login</h1>
+    <form action="{%url 'table'%}" method="post">
+        {% csrf_token %}
+        Usuario: <input type="text" name="username" placeholder="Usuario"><br>
+        Contraseña: <input type="password" name="password" placeholder="Contraseña"><br>
+        <button type="submit">Login</button>
+    </form>
+{% endblock  %}
