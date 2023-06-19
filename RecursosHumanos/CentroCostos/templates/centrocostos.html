@@ -21,7 +21,7 @@
                     <th scope="row">{{datos.Codigo}}</th>
                     <td>{{datos.NombreCentroCostos}}</td>
                     <td>{{datos.Mensaje}}</td>
-                    <form action="{%url 'eliminar' datos.Codigo datos.NombreCentroCostos%}" method="POST">
+                    <form action="{%url 'elimAtributo' datos.Codigo datos.NombreCentroCostos%}" method="POST">
                         {% csrf_token %}
                         <td><button type="submit" class="btn btn-danger">Eliminar</button></td>
                     </form>

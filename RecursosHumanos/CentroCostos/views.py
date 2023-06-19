@@ -53,10 +53,10 @@ def pushCentroCostos (request):
 def agregar(request):
     return render(request, 'agregar.html')
 
-def eliminar(request, id, descripcion):
+def elimAtributo(request, id, descripcion):
     if request.method == 'POST':
         try:
-            url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosDelete?codigocentrocostos="+id+"=1&descripcioncentrocostos="+descripcion)
+            url = requests.delete("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosDelete?codigocentrocostos="+id+"&descripcioncentrocostos="+descripcion)
             data = url.json()
         except:
             return render(request, 'exception.html', {
@@ -69,7 +69,8 @@ def eliminar(request, id, descripcion):
                 'data': data,
             })
     else:
-        return render(request, 'eliminar.html',{
-            'id': id,
-            'descripcion': descripcion
-        })
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSelect")
+        data = url.json()
+        return render(request, 'centrocostos.html',{
+                'data': data,
+            })
