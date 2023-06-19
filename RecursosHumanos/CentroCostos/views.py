@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import requests
 
 # Create your views here.
 def index(request):
@@ -9,11 +10,17 @@ def login(request):
         username = request.POST['username']
         password = request.POST['password']
 
-        if username == "5001" and password == "5001U":
-            return render(request, 'index.html')
-        else:
+        try:
+            url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Usuarios?usuario="+username+"&password="+password)
+            data = url.json()
+        except:
             return render(request, 'exception.html', {
-                "message": "Usuario o contraseña incorrectos"
+                'message': "Ingreso mal un campo"
+            })
+
+        if data[0]['OBSERVACION'] == "INGRESO EXITOSO":
+            return render(request, 'exception.html',{
+                'message': "Ingreso Exitoso"
             })
     else:
         return render(request, 'login.html')
