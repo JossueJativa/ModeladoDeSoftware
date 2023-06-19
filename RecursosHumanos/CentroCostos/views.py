@@ -28,3 +28,24 @@ def login(request):
     else:
         return render(request, 'login.html')
     
+
+def pushCentroCostos (request):
+    if request.method == 'POST':
+        codigo = request.POST['codigo']
+        descripcion = request.POST['descripcion']
+
+        try:
+            url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosInsert?codigocentrocostos="+codigo+"&descripcioncentrocostos="+descripcion)
+        except:
+            return render(request, 'exception.html', {
+                'message': "Error al insertar el centro de costos"
+            })
+        
+        return render(request, 'centrocostos.html',{
+                'message': "Se realizo el envio exitosamente"
+            })
+    else:
+        return render(request, 'addCentroDeCostos.html')
+    
+def pagCentroCostosadd (request):
+    return render(request, 'addCentroDeCostos.html')
