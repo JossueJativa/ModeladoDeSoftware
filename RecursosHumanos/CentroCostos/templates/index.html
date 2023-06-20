@@ -1,10 +1,10 @@
-{% extends 'layout.html' %}
-
-{% block title %}
-    Login
-{% endblock  %}
-
-{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login TTHH</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
     <h1>Login</h1>
     <form action="{%url 'login'%}" method="post">
         {% csrf_token %}
@@ -19,4 +19,5 @@
         </div>
         <button type="submit">Login</button>
     </form>
-{% endblock  %}
+</body>
+</html>
