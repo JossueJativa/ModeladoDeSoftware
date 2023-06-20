@@ -132,9 +132,13 @@ def search(request):
 
         url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSearch?descripcioncentrocostos="+descripcion)
         data = url.json()
+
+        codigo = data[0]['Codigo']
+        descripcionmostrar = data[0]['NombreCentroCostos']
         
         return render(request, 'busqueda.html',{
-            'data': data,
+            'codigo': codigo,
+            'descripcion': descripcionmostrar,
         })
     else:
         url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSelect")
