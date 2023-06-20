@@ -8,4 +8,6 @@ urlpatterns = [
     path('pushCentroCostos', views.pushCentroCostos, name='pushCentroCostos'),
     path('agregar',views.agregar, name='agregar'),
     path('elimAtributo/<str:id>/<str:descripcion>',views.elimAtributo, name='elimAtributo'),
+    path('edit/<str:id>',views.edit, name='edit'),
+    path('editCentroCostos/<str:id>',views.editCentroCostos, name='editCentroCostos'),
 ]

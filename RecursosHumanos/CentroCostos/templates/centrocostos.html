@@ -12,7 +12,8 @@
                 <th scope="col">Codigo</th>
                 <th scope="col">Nombre de centro de costos</th>
                 <th scope="col">Mensaje</th>
-                <th scope="col">Acciones</th>
+                <th scope="col">eliminar</th>
+                <th scope="col">editar</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
                         {% csrf_token %}
                         <td><button type="submit" class="btn btn-danger">Eliminar</button></td>
                     </form>
+                    <td><a class="btn btn-success" href="{%url 'editCentroCostos' datos.Codigo%}">Editar</a></td>
                 </tr>
             {% endfor %}
         </tbody>

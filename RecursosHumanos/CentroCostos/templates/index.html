@@ -10,6 +10,13 @@
         {% csrf_token %}
         Usuario: <input type="text" name="username" placeholder="Usuario"><br>
         Contraseña: <input type="password" name="password" placeholder="Contraseña"><br>
+        <div class="form-group">
+            Selecciona emisor: <select name="emisor">
+                {% for data in emisores %}
+                    <option>{{data.NombreEmisor}}</option>
+                {% endfor %}
+            </select>
+        </div>
         <button type="submit">Login</button>
     </form>
 {% endblock  %}
