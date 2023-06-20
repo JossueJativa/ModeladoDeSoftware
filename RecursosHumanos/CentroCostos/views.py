@@ -95,12 +95,7 @@ def edit(request, id):
         descripcion = request.POST['descripcion']
 
         try:
-            url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSelect")
-            data = url.json()
-
-            for datos in data:
-                if datos['Codigo'] == id:
-                    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosUpdate?codigocentrocostos="+id+"&descripcioncentrocostos="+descripcion)
+            url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosUpdate?codigocentrocostos="+id+"&descripcioncentrocostos="+descripcion)
 
         except:
             return render(request, 'exception.html', {
