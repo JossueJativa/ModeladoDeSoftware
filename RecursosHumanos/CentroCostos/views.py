@@ -124,8 +124,9 @@ def editCentroCostos(request, id):
     data = url.json()
 
     for datos in data:
-        if datos['Codigo'] == id:
+        if datos['Codigo'] == int(id):
             data = datos
+    
     return render(request, 'editCentroCostos.html',{
         'data': data,
     })
