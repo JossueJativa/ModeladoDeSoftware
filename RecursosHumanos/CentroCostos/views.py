@@ -125,3 +125,20 @@ def editCentroCostos(request, id):
     return render(request, 'editCentroCostos.html',{
         'data': data,
     })
+
+def search(request):
+    if request.method == "POST":
+        descripcion = request.POST['descripcion']
+
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSearch?descripcioncentrocostos="+descripcion)
+        data = url.json()
+        
+        return render(request, 'busqueda.html',{
+            'data': data,
+        })
+    else:
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSelect")
+        data = url.json()
+        return render(request, 'centrocostos.html',{
+                'data': data,
+            })
