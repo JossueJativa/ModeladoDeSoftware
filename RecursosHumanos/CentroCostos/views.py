@@ -146,3 +146,10 @@ def search(request):
         return render(request, 'centrocostos.html',{
                 'data': data,
             })
+
+def PagCentroCostos(request):
+    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSelect")
+    data = url.json()
+    return render(request, 'centrocostos.html',{
+        'data': data,
+    })   

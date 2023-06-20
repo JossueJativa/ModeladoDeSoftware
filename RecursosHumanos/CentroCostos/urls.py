@@ -11,4 +11,5 @@ urlpatterns = [
     path('edit/<str:id>',views.edit, name='edit'),
     path('editCentroCostos/<str:id>',views.editCentroCostos, name='editCentroCostos'),
     path('search', views.search, name='search'),
+    path('PagCentroCostos', views.PagCentroCostos, name='PagCentroCostos'),
 ]
