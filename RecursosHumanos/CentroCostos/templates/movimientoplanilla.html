@@ -1,13 +1,13 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Centro de costos
+    Movimiento de plantilla
 {% endblock  %}
 
 {% block body %}
-    <h1>Centro de costos</h1>
+    <h1>Movimiento de plantilla</h1>
 
-    Buscar centro de costos Codigo:
+    Buscar Movimiento de plantilla por Codigo:
     <form action="PagMovimientoPlanillaSearch" method="post">
         {% csrf_token %}
         <input type="text" name="codigo" placeholder="codigo">
@@ -57,7 +57,7 @@
                         {% csrf_token %}
                         <td>
                             <button type="submit" class="btn btn-danger">Eliminar</button>
-                            <a class="btn btn-success" href="#">Editar</a>
+                            <a class="btn btn-success" href="{% url 'PagMovimientoPlanillaEdit' datos.CodigoConcepto %}">Editar</a>
                         </td>
                     </form>
                 </tr>

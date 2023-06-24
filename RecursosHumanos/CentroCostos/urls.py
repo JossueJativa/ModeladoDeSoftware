@@ -14,4 +14,5 @@ urlpatterns = [
     path('PagCentroCostos', views.PagCentroCostos, name='PagCentroCostos'),
     path('PagMovimientoPlanilla', views.PagMovimientoPlanilla, name='PagMovimientoPlanilla'),
     path('PagMovimientoPlanillaSearch', views.PagMovimientoPlanillaSearch, name='PagMovimientoPlanillaSearch'),
+    path('PagMovimientoPlanillaEdit/<str:id>', views.PagMovimientoPlanillaEdit, name='PagMovimientoPlanillaEdit'),
 ]

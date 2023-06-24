@@ -186,3 +186,15 @@ def PagMovimientoPlanillaSearch (request):
         return render(request, 'movimientoplanilla.html',{
                 'data': data,
             })
+    
+def PagMovimientoPlanillaEdit (request, id):
+    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")
+    data = url.json()
+
+    for datos in data:
+        if datos['CodigoConcepto'] == int(id):
+            data = datos
+    
+    return render(request, 'editMovimientoPlanilla.html',{
+        'datos': data,
+    })
