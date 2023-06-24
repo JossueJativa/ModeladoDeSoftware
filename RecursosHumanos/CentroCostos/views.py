@@ -153,3 +153,36 @@ def PagCentroCostos(request):
     return render(request, 'centrocostos.html',{
         'data': data,
     })   
+
+def PagMovimientoPlanilla (request):
+    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")
+    data = url.json()
+
+    ##Filtrar por prioridad
+    data = sorted(data, key=lambda k: k['Prioridad'], reverse=True)
+
+    return render(request, 'movimientoplanilla.html',{
+        'data': data,
+    })
+
+def PagMovimientoPlanillaSearch (request):
+    if request.method == "POST":
+        ## buscar por CodigoConcepto
+        codigo = request.POST['codigo']
+
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")
+        data = url.json()
+
+        for datos in data:
+            if datos['CodigoConcepto'] == int(codigo):
+                data = datos
+        
+        return render(request, 'busquedaMovimientoPlantilla.html',{
+            'datos': data,
+        })
+    else:
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")
+        data = url.json()
+        return render(request, 'movimientoplanilla.html',{
+                'data': data,
+            })

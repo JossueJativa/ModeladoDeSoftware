@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Centro de costos
+{% endblock  %}
+
+{% block body %}
+    <h1>Centro de costos</h1>
+
+    Buscar centro de costos Codigo:
+    <form action="PagMovimientoPlanillaSearch" method="post">
+        {% csrf_token %}
+        <input type="text" name="codigo" placeholder="codigo">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
+    <a href="#" class="btn btn-primary">Agregar</a>
+    
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Concepto</th>
+                <th scope="col">Prioridad</th>
+                <th scope="col">TipoOperacion</th>
+                <th scope="col">Cuenta1</th>
+                <th scope="col">Cuenta2</th>
+                <th scope="col">Cuenta3</th>
+                <th scope="col">Cuenta4</th>
+                <th scope="col">MovimientoExcepcion1</th>
+                <th scope="col">MovimientoExcepcion2</th>
+                <th scope="col">MovimientoExcepcion3</th>
+                <th scope="col">Aplica_iess</th>
+                <th scope="col">Aplica_imp_renta</th>
+                <th scope="col">Empresa_Afecta_Iess</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for datos in data %}
+                <tr>
+                    <th scope="row">{{datos.CodigoConcepto}}</th>
+                    <td>{{datos.Concepto}}</td>
+                    <td>{{datos.Prioridad}}</td>
+                    <td>{{datos.TipoOperacion}}</td>
+                    <td>{{datos.Cuenta1}}</td>
+                    <td>{{datos.Cuenta2}}</td>
+                    <td>{{datos.Cuenta3}}</td>
+                    <td>{{datos.Cuenta4}}</td>
+                    <td>{{datos.MovimientoExcepcion1}}</td>
+                    <td>{{datos.MovimientoExcepcion2}}</td>
+                    <td>{{datos.MovimientoExcepcion3}}</td>
+                    <td>{{datos.Aplica_iess}}</td>
+                    <td>{{datos.Aplica_imp_renta}}</td>
+                    <td>{{datos.Empresa_Afecta_Iess}}</td>
+                    <form action="#" method="POST">
+                        {% csrf_token %}
+                        <td>
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                            <a class="btn btn-success" href="#">Editar</a>
+                        </td>
+                    </form>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock  %}

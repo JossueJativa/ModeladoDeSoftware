@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Busqueda de informacion
+{% endblock  %}
+
+{% block body %}
+    <h1>Busqueda de informacion</h1>
+    Codigo: {{datos.CodigoConcepto}}</br>
+    Concepto: {{datos.Concepto}}</br>
+    Prioridad: {{datos.Prioridad}}</br>
+    Tipo operacion: {{datos.TipoOperacion}}</br>
+    Cuenta 1: {{datos.Cuenta1}}</br>
+    Cuenta 2: {{datos.Cuenta2}}</br>
+    Cuenta 3: {{datos.Cuenta3}}</br>
+    Cuenta 4: {{datos.Cuenta4}}</br>
+    Movimiento Excepcion 1: {{datos.MovimientoExcepcion1}}</br>
+    Movimiento Excepcion 2: {{datos.MovimientoExcepcion2}}</br>
+    Movimiento Excepcion 3: {{datos.MovimientoExcepcion3}}</br>
+    Aplica al IESS: {{datos.Aplica_iess}}</br>
+    Aplica impuesto a la renta: {{datos.Aplica_imp_renta}}</br>
+    Empresa afecta al IESS: {{datos.Empresa_Afecta_Iess}}</br>
+{% endblock  %}

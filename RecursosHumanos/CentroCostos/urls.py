@@ -12,4 +12,6 @@ urlpatterns = [
     path('editCentroCostos/<str:id>',views.editCentroCostos, name='editCentroCostos'),
     path('search', views.search, name='search'),
     path('PagCentroCostos', views.PagCentroCostos, name='PagCentroCostos'),
+    path('PagMovimientoPlanilla', views.PagMovimientoPlanilla, name='PagMovimientoPlanilla'),
+    path('PagMovimientoPlanillaSearch', views.PagMovimientoPlanillaSearch, name='PagMovimientoPlanillaSearch'),
 ]
