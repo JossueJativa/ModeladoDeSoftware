@@ -54,7 +54,7 @@ def pushCentroCostos (request):
             url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosInsert?codigocentrocostos="+codigo+"&descripcioncentrocostos="+descripcion)
             data = url.json()
         except:
-            return render(request, 'exception.html', {
+            return render(request, 'exceptiondentro.html', {
                 'message': "Error al insertar el centro de costos"
             })
         
@@ -74,7 +74,7 @@ def elimAtributo(request, id, descripcion):
         try:
             url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosDelete?codigocentrocostos="+id+"&descripcioncentrocostos="+descripcion)
         except:
-            return render(request, 'exception.html', {
+            return render(request, 'exceptiondentro.html', {
                 'message': "Error al eliminar el centro de costos"
             })
         
@@ -98,7 +98,7 @@ def edit(request, id):
             url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosUpdate?codigocentrocostos="+id+"&descripcioncentrocostos="+descripcion)
 
         except:
-            return render(request, 'exception.html', {
+            return render(request, 'exceptiondentro.html', {
                 'message': "Error al editar el centro de costos"
             })
         
