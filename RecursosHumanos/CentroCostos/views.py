@@ -243,11 +243,11 @@ def editMovimientoPlantilla (request, id):
         Empresa_Afecta_Iess = request.POST['Empresa_Afecta_Iess']
 
         try:
-            url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaUpdate?codigoplanilla="+id+"&conceptos="+Conceptos+"&prioridad="+Prioridad+"&tipooperacion="+TipoOperacion+"&cuenta1="+Cuenta1+"&cuenta2="+Cuenta2+"&cuenta3="+Cuenta3+"&cuenta4="+Cuenta4+"&MovimientoExcepcion1="+MovimientoExcepcion1+"&MovimientoExcepcion2="+MovimientoExcepcion2+"&MovimientoExcepcion3="+MovimientoExcepcion3+"&Traba_Aplica_iess="+Traba_Aplica_iess+"&Traba_Proyecto_imp_renta="+Traba_Proyecto_imp_renta+"&Aplica_Proy_Renta="+Aplica_Proy_Renta+"&Empresa_Afecta_Iess="+Empresa_Afecta_Iess)
-            data = url.json()
+            requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaUpdate?codigoplanilla="+id+"&conceptos="+Conceptos+"&prioridad="+Prioridad+"&tipooperacion="+TipoOperacion+"&cuenta1="+Cuenta1+"&cuenta2="+Cuenta2+"&cuenta3="+Cuenta3+"&cuenta4="+Cuenta4+"&MovimientoExcepcion1="+MovimientoExcepcion1+"&MovimientoExcepcion2="+MovimientoExcepcion2+"&MovimientoExcepcion3="+MovimientoExcepcion3+"&Traba_Aplica_iess="+Traba_Aplica_iess+"&Traba_Proyecto_imp_renta="+Traba_Proyecto_imp_renta+"&Aplica_Proy_Renta="+Aplica_Proy_Renta+"&Empresa_Afecta_Iess="+Empresa_Afecta_Iess)
         except:
-            url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")
-            data = url.json()
+            return render(request, 'exceptiondentro.html',{
+                'message': 'Error al actualizar el movimiento de planilla',
+            })
 
         url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")
         data = url.json()
@@ -258,3 +258,67 @@ def editMovimientoPlantilla (request, id):
         return render(request, 'movimientoplanilla.html',{
             'data': data,
         })
+    
+def PagMovimientoPlanillaCreate (request):
+    ##Sacar tipos de operaciones
+    url2 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoOperacion")
+    data2 = url2.json()
+
+    ##Sacar movimiento excepcion
+    url3 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientosExcepcion1y2")
+    data3 = url3.json()
+
+    #Sacar movimiento de excepcion 3
+    url4 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientosExcepcion3")
+    data4 = url4.json()
+
+    ##Sacar traba aplica a iess
+    url5 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabaAfectaIESS")
+    data5 = url5.json()
+
+    ##Sacar afecta impuesto a la renta
+    url6 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabAfecImpuestoRenta")
+    data6 = url6.json()
+
+    return render(request, 'agregarMovimiento.html',{
+        'operacion': data2,
+        'excepcion': data3,
+        'excepcion3': data4,
+        'traba': data5,
+        'afecta': data6,
+    })
+
+def pushMovimientoPlantilla(request):
+    if request.method == "POST":
+        Conceptos = request.POST['Conceptos']
+        Prioridad = request.POST['Prioridad']
+        TipoOperacion = request.POST['TipoOperacion']
+        Cuenta1 = request.POST['Cuenta1']
+        Cuenta2 = request.POST['Cuenta2']
+        Cuenta3 = request.POST['Cuenta3']
+        Cuenta4 = request.POST['Cuenta4']
+        MovimientoExcepcion1 = request.POST['MovimientoExcepcion1']
+        MovimientoExcepcion2 = request.POST['MovimientoExcepcion2']
+        MovimientoExcepcion3 = request.POST['MovimientoExcepcion3']
+        Traba_Aplica_iess = request.POST['Traba_Aplica_iess']
+        Traba_Proyecto_imp_renta = request.POST['Traba_Proyecto_imp_renta']
+        Aplica_Proy_Renta = request.POST['Aplica_Proy_Renta']
+        Empresa_Afecta_Iess = request.POST['Empresa_Afecta_Iess']
+        
+        try:
+            requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaInsert?conceptos="+Conceptos+"&prioridad="+Prioridad+"&tipooperacion="+TipoOperacion+"&cuenta1="+Cuenta1+"&cuenta2="+Cuenta2+"&cuenta3="+Cuenta3+"&cuenta4="+Cuenta4+"&MovimientoExcepcion1="+MovimientoExcepcion1+"&MovimientoExcepcion2="+MovimientoExcepcion2+"&MovimientoExcepcion3="+MovimientoExcepcion3+"&Traba_Aplica_iess="+Traba_Aplica_iess+"&Traba_Proyecto_imp_renta="+Traba_Proyecto_imp_renta+"&Aplica_Proy_Renta="+Aplica_Proy_Renta+"&Empresa_Afecta_Iess="+Empresa_Afecta_Iess)
+        except:
+            return render(request, 'exceptiondentro.html',{
+                'message': 'Error al insertar el movimiento de planilla',
+            })
+
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")
+        data = url.json()
+
+        ##Filtrar por prioridad
+        data = sorted(data, key=lambda k: k['Prioridad'], reverse=True)
+
+        return render(request, 'movimientoplanilla.html',{
+            'data': data,
+        })   
+        
