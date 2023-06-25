@@ -7,7 +7,7 @@
 {% block body %}
     <h3>Editar el campo del codigo: {{data.Codigo}}</h3>
 
-    <form action="{%url 'edit' data.Codigo%}" method="POST">
+    <form action="{%url 'edit' data.Codigo%}" method="post">
         {% csrf_token %}
         <input type="text" name="descripcion" value="{{data.NombreCentroCostos}}" placeholder="Descripcion" required>
         <button type="submit">Editar</button>

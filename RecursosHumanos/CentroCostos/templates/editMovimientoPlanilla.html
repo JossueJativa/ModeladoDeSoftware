@@ -6,24 +6,68 @@
 
 {% block body %}
     <h3>Editar el campo del codigo: {{datos.CodigoConcepto}}</h3>
+    <a>Recuerde poner los campos que son de seleccion</a></br>
+    <a>Ya que aquellos no se devuelven automaticamente</a></br>
+    </br>
 
-    <form action="#" method="POST">
+    <form action="{% url 'editMovimientoPlantilla' datos.CodigoConcepto %}" method="POST">
         {% csrf_token %}
+        Concepto: <input type="text" class="form-control" id="Conceptos" name="Conceptos" value="{{datos.Concepto}}"></br>
+        Prioridad: <input type="text" class="form-control" id="Prioridad" name="Prioridad" value="{{datos.Prioridad}}"></br>
+        Tipo de operacion anteriormente seleccionado: {{datos.TipoOperacion}}
         <div class="form-group">
-            Codigo: <input type="text" class="form-control" id="Codigo" name="Codigo" value="{{datos.CodigoConcepto}}">
-            Concepto: <input type="text" class="form-control" id="Codigo" name="Codigo" value="{{datos.Concepto}}">
-            Prioridad: <input type="text" class="form-control" id="Codigo" name="Codigo" value="{{datos.Prioridad}}">
-            Tipo de operacion: <input type="text" class="form-control" id="Codigo" name="Codigo" value="{{datos.TipoOperacion}}">
-            Cuenta 1: <input type="text" class="form-control" id="Codigo" name="Codigo" value="{{datos.Cuenta1}}">
-            Cuenta 2: <input type="text" class="form-control" id="Codigo" name="Codigo" value="{{datos.Cuenta2}}">
-            Cuenta 3: <input type="text" class="form-control" id="Codigo" name="Codigo" value="{{datos.Cuenta3}}">
-            Cuenta 4: <input type="text" class="form-control" id="Codigo" name="Codigo" value="{{datos.Cuenta4}}">
-            Movimiento Excepcion 1: <input type="text" class="form-control" id="Codigo" name="Codigo" value="{{datos.MovimientoExcepcion1}}">
-            Movimiento Excepcion 2: <input type="text" class="form-control" id="Codigo" name="Codigo" value="{{datos.MovimientoExcepcion2}}">
-            Movimiento Excepcion 3: <input type="text" class="form-control" id="Codigo" name="Codigo" value="{{datos.MovimientoExcepcion3}}">
-            Aplica IESS: <input type="text" class="form-control" id="Codigo" name="Codigo" value="{{datos.Aplica_iess}}">
-            Aplica Impuesto a la renta: <input type="text" class="form-control" id="Codigo" name="Codigo" value="{{datos.Aplica_imp_renta}}">
-            Empresa Afecta Iess: <input type="text" class="form-control" id="Codigo" name="Codigo" value="{{datos.Empresa_Afecta_Iess}}">
-        </div>
+            Tipo de operacion: <select name="TipoOperacion">
+                {% for data in operacion %}
+                    <option>{{data.CodigoTipooperacion}}</option>
+                {% endfor %}
+            </select>
+        </div></br>
+        Cuenta 1: <input type="text" class="form-control" id="Cuenta1" name="Cuenta1" value="{{datos.Cuenta1}}"></br>
+        Cuenta 2: <input type="text" class="form-control" id="Cuenta2" name="Cuenta2" value="{{datos.Cuenta2}}"></br>
+        Cuenta 3: <input type="text" class="form-control" id="Cuenta3" name="Cuenta3" value="{{datos.Cuenta3}}"></br>
+        Cuenta 4: <input type="text" class="form-control" id="Cuenta4" name="Cuenta4" value="{{datos.Cuenta4}}"></br>
+        Tipo de Movimiento de excepcion 1 anteriormente seleccionado: {{datos.MovimientoExcepcion1}}
+        <div class="form-group">
+            Tipo de operacion: <select name="MovimientoExcepcion1">
+                {% for data in excepcion %}
+                    <option>{{data.CodigoMovimientoExce}}</option>
+                {% endfor %}
+            </select>
+        </div></br>
+        Tipo de Movimiento de excepcion 2 anteriormente seleccionado: {{datos.MovimientoExcepcion2}}
+        <div class="form-group">
+            Tipo de operacion: <select name="MovimientoExcepcion2">
+                {% for data in excepcion %}
+                    <option>{{data.CodigoMovimientoExce}}</option>
+                {% endfor %}
+            </select>
+        </div></br>
+        Tipo de Movimiento de excepcion 3 anteriormente seleccionado: {{datos.MovimientoExcepcion3}}
+        <div class="form-group">
+            Tipo de operacion: <select name="MovimientoExcepcion2">
+                {% for data in excepcion3 %}
+                    <option>{{data.CodigoMovimientoExce}}</option>
+                {% endfor %}
+            </select>
+        </div></br>
+        Trabajador Aplica a IESS anteriormente seleccionado: {{datos.Aplica_iess}}
+        <div class="form-group">
+            Tipo de operacion: <select name="Traba_Aplica_iess">
+                {% for data in traba %}
+                    <option>{{data.CodigoMovimientoExce}}</option>
+                {% endfor %}
+            </select>
+        </div></br>
+        Aplica Impuesto a la renta anteriormente seleccionado: {{datos.Aplica_imp_renta}}</br>
+        <div class="form-group">
+            Tipo de operacion: <select name="Traba_Proyecto_imp_renta">
+                {% for data in afecta %}
+                    <option>{{data.CodigoMovimientoExce}}</option>
+                {% endfor %}
+            </select>
+        </div></br>
+        Aplica proyecto renta: <input type="text" class="form-control" id="Aplica_Proy_Renta" name="Aplica_Proy_Renta" value="{{datos.Aplica_Proy_Renta}}"></br>
+        Empresa Afecta Iess: <input type="text" class="form-control" id="Empresa_Afecta_Iess" name="Empresa_Afecta_Iess" value="{{datos.Empresa_Afecta_Iess}}"></br>
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 {% endblock  %}
