@@ -168,25 +168,19 @@ def PagMovimientoPlanilla (request):
 
 def PagMovimientoPlanillaSearch (request):
     if request.method == "POST":
-        ## buscar por CodigoConcepto
-        codigo = request.POST['codigo']
+        ## buscar por Concepto
+        concepto = request.POST['Concepto']
 
-        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")
+        ##http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSearch?Concepto=prueba
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSearch?Concepto="+concepto)
         data = url.json()
 
-        for datos in data:
-            if datos['CodigoConcepto'] == int(codigo):
-                data = datos
+        ##Filtrar por prioridad
+        data = sorted(data, key=lambda k: k['Prioridad'], reverse=True)
         
         return render(request, 'busquedaMovimientoPlantilla.html',{
-            'datos': data,
+            'data': data,
         })
-    else:
-        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")
-        data = url.json()
-        return render(request, 'movimientoplanilla.html',{
-                'data': data,
-            })
     
 def PagMovimientoPlanillaEdit (request, id):
     url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")
@@ -306,7 +300,12 @@ def pushMovimientoPlantilla(request):
         Empresa_Afecta_Iess = request.POST['Empresa_Afecta_Iess']
         
         try:
-            requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaInsert?conceptos="+Conceptos+"&prioridad="+Prioridad+"&tipooperacion="+TipoOperacion+"&cuenta1="+Cuenta1+"&cuenta2="+Cuenta2+"&cuenta3="+Cuenta3+"&cuenta4="+Cuenta4+"&MovimientoExcepcion1="+MovimientoExcepcion1+"&MovimientoExcepcion2="+MovimientoExcepcion2+"&MovimientoExcepcion3="+MovimientoExcepcion3+"&Traba_Aplica_iess="+Traba_Aplica_iess+"&Traba_Proyecto_imp_renta="+Traba_Proyecto_imp_renta+"&Aplica_Proy_Renta="+Aplica_Proy_Renta+"&Empresa_Afecta_Iess="+Empresa_Afecta_Iess)
+            requests.post("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaInsert?conceptos="+Conceptos+
+                         "&prioridad="+Prioridad+"&tipooperacion="+TipoOperacion+"&cuenta1="+Cuenta1+"&cuenta2="+Cuenta2+
+                         "&cuenta3="+Cuenta3+"&cuenta4="+Cuenta4+"&MovimientoExcepcion1="+MovimientoExcepcion1+
+                         "&MovimientoExcepcion2="+MovimientoExcepcion2+"&MovimientoExcepcion3="+MovimientoExcepcion3+
+                         "&Traba_Aplica_iess="+Traba_Aplica_iess+"&Traba_Proyecto_imp_renta="+Traba_Proyecto_imp_renta+
+                         "&Aplica_Proy_Renta="+Aplica_Proy_Renta+"&Empresa_Afecta_Iess="+Empresa_Afecta_Iess)
         except:
             return render(request, 'exceptiondentro.html',{
                 'message': 'Error al insertar el movimiento de planilla',
@@ -327,5 +326,4 @@ def PagTipoTrabajador(request):
     data = url.json()
     return render(request, 'tipotrabajador.html',{
         'data': data,
-    })
-        
+    })        

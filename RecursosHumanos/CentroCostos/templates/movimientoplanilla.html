@@ -10,7 +10,7 @@
     Buscar Movimiento de plantilla por Codigo:
     <form action="PagMovimientoPlanillaSearch" method="post">
         {% csrf_token %}
-        <input type="text" name="codigo" placeholder="codigo">
+        <input type="text" name="Concepto" placeholder="Concepto">
         <button type="submit" class="btn btn-primary">Buscar</button>
     </form>
 
@@ -57,6 +57,7 @@
                         {% csrf_token %}
                         <td>
                             <a class="btn btn-success" href="{% url 'PagMovimientoPlanillaEdit' datos.CodigoConcepto %}">Editar</a>
+                            <a class="btn btn-danger" href="#">Eliminar</a>
                         </td>
                     </form>
                 </tr>
