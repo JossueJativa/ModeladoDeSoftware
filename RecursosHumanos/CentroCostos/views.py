@@ -320,5 +320,12 @@ def pushMovimientoPlantilla(request):
 
         return render(request, 'movimientoplanilla.html',{
             'data': data,
-        })   
+        }) 
+
+def PagTipoTrabajador(request):
+    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoTrabajador")
+    data = url.json()
+    return render(request, 'tipotrabajador.html',{
+        'data': data,
+    })
         

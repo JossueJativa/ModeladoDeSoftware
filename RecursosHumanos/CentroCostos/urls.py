@@ -18,4 +18,5 @@ urlpatterns = [
     path('editMovimientoPlantilla/<str:id>', views.editMovimientoPlantilla, name='editMovimientoPlantilla'),
     path('PagMovimientoPlanillaCreate', views.PagMovimientoPlanillaCreate, name='PagMovimientoPlanillaCreate'),
     path('pushMovimientoPlantilla', views.pushMovimientoPlantilla, name='pushMovimientoPlantilla'),
+    path('PagTipoTrabajador', views.PagTipoTrabajador, name='PagTipoTrabajador'),
 ]
