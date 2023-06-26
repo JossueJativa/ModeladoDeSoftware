@@ -170,8 +170,9 @@ def PagMovimientoPlanillaSearch (request):
     if request.method == "POST":
         ## buscar por Concepto
         concepto = request.POST['Concepto']
+        ##Quitar los espacios entre palabras
+        concepto = concepto.replace(" ", "&")
 
-        ##http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSearch?Concepto=prueba
         url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSearch?Concepto="+concepto)
         data = url.json()
 
@@ -181,6 +182,42 @@ def PagMovimientoPlanillaSearch (request):
         return render(request, 'busquedaMovimientoPlantilla.html',{
             'data': data,
         })
+    
+def eliminarMovimientoPlanilla (request, id):
+    if request.method == 'POST':
+
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")
+        data = url.json()
+
+        #Filter by priority
+        data = sorted(data, key=lambda k: k['Prioridad'], reverse=True)
+
+        # buscar por Concepto
+        for datos in data:
+            if datos['CodigoConcepto'] == int(id):
+                concepto = datos['Concepto']
+                ##Quitar los espacios entre palabras
+                concepto = concepto.replace(" ", "&")
+
+        try:
+            url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimeintoPlanillaDelete?codigomovimiento="+id+
+                               "&descripcionomovimiento="+concepto)
+            data = url.json()
+        except:
+            return render(request, 'exceptiondentro.html', {
+                'message': "Error al eliminar el movimiento de planilla"
+            })
+        
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")
+        data = url.json()
+
+        ##Filtrar por prioridad
+        data = sorted(data, key=lambda k: k['Prioridad'], reverse=True)
+
+        return render(request, 'movimientoplanilla.html',{
+                'data': data,
+            })
+
     
 def PagMovimientoPlanillaEdit (request, id):
     url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")

@@ -53,13 +53,13 @@
                     <td>{{datos.Aplica_iess}}</td>
                     <td>{{datos.Aplica_imp_renta}}</td>
                     <td>{{datos.Empresa_Afecta_Iess}}</td>
-                    <form action="#" method="POST">
-                        {% csrf_token %}
-                        <td>
-                            <a class="btn btn-success" href="{% url 'PagMovimientoPlanillaEdit' datos.CodigoConcepto %}">Editar</a>
-                            <a class="btn btn-danger" href="#">Eliminar</a>
-                        </td>
-                    </form>
+                    <td>
+                        <form action="{% url 'eliminarMovimientoPlanilla' datos.CodigoConcepto %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                        <a class="btn btn-success" href="{% url 'PagMovimientoPlanillaEdit' datos.CodigoConcepto %}">Editar</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
