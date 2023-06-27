@@ -358,9 +358,29 @@ def pushMovimientoPlantilla(request):
             'data': data,
         }) 
 
-def PagTipoTrabajador(request):
-    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoTrabajador")
-    data = url.json()
-    return render(request, 'tipotrabajador.html',{
+def PagbuscarTrabajadores (request):
+    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/GetEmisor")
+    dataSucursal = url.json()
+    return render(request, 'buscarTrabajador.html', {
+        'dataSucursal': dataSucursal,
+    })
+
+def PagTrabajadores (request):
+    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/GetEmisor")
+    dataSucursal = url.json()
+
+    if request.method == "POST":
+        ##Buscar la sucursal de la que se quiere sacar los trabajadores
+        sucursal = request.POST['sucursal']
+
+        for datos in dataSucursal:
+            if datos["NombreEmisor"] == sucursal:
+                id = str(datos["Codigo"])
+
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorSelect?sucursal="+id)
+        data = url.json()
+
+        return render(request, 'infoTrabajador.html',{
         'data': data,
-    })        
+        })
+        
