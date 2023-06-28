@@ -24,4 +24,5 @@ urlpatterns = [
     path('PagTrabajadoresCreate/<str:id>', views.PagTrabajadoresCreate, name='PagTrabajadoresCreate'),
     path('trabajadoresPost', views.trabajadoresPost, name='trabajadoresPost'),
     path('trabajadoresupdate/<str:id>/<str:id2>', views.trabajadoresupdate, name='trabajadoresupdate'),
+    path('trabajadoresDelete/<str:id>/<str:id2>', views.trabajadoresDelete, name='trabajadoresDelete'),
 ]

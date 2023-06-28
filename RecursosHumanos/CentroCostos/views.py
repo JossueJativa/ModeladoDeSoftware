@@ -531,3 +531,16 @@ def trabajadoresupdate (request, id, id2):
         'dataTipoCuenta': dataTipoCuenta,
         'dataDecimoTerceroDecimoCuarto': dataDecimoTerceroDecimoCuarto,
     })
+
+def trabajadoresDelete (request, id, id2):
+    id2 = int(id2)
+    if request.method == "POST":
+        requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorDelete?sucursal="+id+"&codigoempleado=1"+id2)
+
+    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorSelect?sucursal="+id)
+    data = url.json()
+
+    return render(request, 'infoTrabajador.html',{
+        'data': data,
+        'id': id,
+    })
