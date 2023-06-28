@@ -109,7 +109,7 @@
                     <td>{{datos.Remuneracion_Minima}}</tdpe=>
                     <td>{{datos.CuotaCuentaCorriente}}</td=>
                     <td>{{datos.Fondo_Reserva}}</td>
-                    <td>Acciones</td>
+                    <td><a class="btn btn-primary" href="{% url 'trabajadoresupdate' id datos.Id_Trabajador %}">Editar</a></td>
                 </tr>
             {% endfor %}
         </tbody>
