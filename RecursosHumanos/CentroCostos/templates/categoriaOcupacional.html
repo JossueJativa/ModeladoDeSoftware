@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Centro de costos
+{% endblock  %}
+
+{% block body %}
+    <h3>Categorias Ocupacionales</h3>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for datos in data %}
+                <tr>
+                    <th scope="row">{{datos.Codigo}}</th>
+                    <td>{{datos.Descripcion}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock  %}

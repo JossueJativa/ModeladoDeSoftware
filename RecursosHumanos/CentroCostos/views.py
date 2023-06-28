@@ -560,3 +560,42 @@ def buscartrabajador(request, id):
             'id': id,
         })
         
+def pagTipoTrabajador(request):
+    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoTrabajador")
+    data = url.json()
+
+    return render(request, 'tipoTrabajador.html',{
+        'data': data,
+    })
+
+def pagNivelSalarial(request):
+    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/NivelSalarial")
+    data = url.json()
+
+    return render(request, 'nivelSalarial.html',{
+        'data': data,
+    })
+
+def pagCategoriaOcupacional(request):
+    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CategoriaOcupacional")
+    data = url.json()
+
+    return render(request, 'categoriaOcupacional.html',{
+        'data': data,
+    })
+
+def pagTipoCese(request):
+    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoCese")
+    data = url.json()
+
+    return render(request, 'tipoCese.html',{
+        'data': data,
+    })
+
+def pagTipoContrato(request):
+    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoContrato")
+    data = url.json()
+
+    return render(request, 'tipoContrato.html',{
+        'data': data,
+    })

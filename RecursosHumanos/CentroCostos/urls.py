@@ -26,4 +26,9 @@ urlpatterns = [
     path('trabajadoresupdate/<str:id>/<str:id2>', views.trabajadoresupdate, name='trabajadoresupdate'),
     path('trabajadoresDelete/<str:id>/<str:id2>', views.trabajadoresDelete, name='trabajadoresDelete'),
     path('buscartrabajador/<str:id>', views.buscartrabajador, name='buscartrabajador'),
+    path('pagTipoTrabajador', views.pagTipoTrabajador, name='pagTipoTrabajador'),
+    path('pagNivelSalarial', views.pagNivelSalarial, name='pagNivelSalarial'),
+    path('pagCategoriaOcupacional', views.pagCategoriaOcupacional, name='pagCategoriaOcupacional'),
+    path('pagTipoCese', views.pagTipoCese, name='pagTipoCese'),
+    path('pagTipoContrato', views.pagTipoContrato, name='pagTipoContrato'),
 ]
