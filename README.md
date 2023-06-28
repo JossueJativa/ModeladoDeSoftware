@@ -16,3 +16,4 @@ Entrega de trabajo final de modelado de software
 <p>Arreglo de formato de ingresos y edicciones</p>
 <p>Salida de nuevas opciones del menu</p>
 <p>Arreglos de bugs que habian en la aplicacion</p>
+<p>Validaciones en la misma pantalla de login</p>
