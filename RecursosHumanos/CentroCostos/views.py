@@ -482,8 +482,9 @@ def trabajadoresPost (request):
 def trabajadoresupdate (request, id, id2):
     url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorSelect?sucursal="+id)
     data = url.json()
+    id2 = int(id2)
     for i in data:
-        if i['COMP_Codigo'] == id2:
+        if i['Id_Trabajador'] == id2:
             data2 = i
 
     url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/GetEmisor")
@@ -514,7 +515,7 @@ def trabajadoresupdate (request, id, id2):
     dataDecimoTerceroDecimoCuarto = url13.json()
 
     return render(request, 'updateTrabajador.html',{
-        'data': data2,
+        'data2': data2,
         'id': id,
         'dataSucursal': dataSucursal,
         'dataTipoTrabajador': dataTipoTrabajador,
