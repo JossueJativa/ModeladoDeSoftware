@@ -1,7 +1,7 @@
 # ModeladoDeSoftware
 Entrega de trabajo final de modelado de software
 
-Acciones realizadas hasta 19/jun/2023: 
+<h3>Acciones realizadas hasta 19/jun/2023:</h3> 
 <l1>
   <p>Lectura de la API</p>
   <p>Inicio de secion con la api en usuarios</p>
@@ -10,7 +10,7 @@ Acciones realizadas hasta 19/jun/2023:
   <p>Eliminar alguna accion de centro de costos</p>
 </l1>
 
-Acciones realizadas hasta el 27/jun/2023:
+<h3>Acciones realizadas hasta el 27/jun/2023:</h3>
 
 <l1>
   <p>Lectura de la API en la parte de movimientos de plantilla</p>
