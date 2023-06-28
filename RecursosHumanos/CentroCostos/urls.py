@@ -31,4 +31,5 @@ urlpatterns = [
     path('pagCategoriaOcupacional', views.pagCategoriaOcupacional, name='pagCategoriaOcupacional'),
     path('pagTipoCese', views.pagTipoCese, name='pagTipoCese'),
     path('pagTipoContrato', views.pagTipoContrato, name='pagTipoContrato'),
+    path('pagEstadoTrabajador', views.pagEstadoTrabajador, name='pagEstadoTrabajador'),
 ]

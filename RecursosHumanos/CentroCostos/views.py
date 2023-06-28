@@ -11,6 +11,8 @@ def index(request):
     })
 
 def login(request):
+    url2 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/GetEmisor")
+    data2 = url2.json()
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -20,8 +22,9 @@ def login(request):
             url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Usuarios?usuario="+username+"&password="+password)
             data = url.json()
         except:
-            return render(request, 'exception.html', {
-                'message': "Usuario o contraseña incorrectos"
+            return render(request, 'index.html', {
+                'message': "Usuario o contraseña incorrectos",
+                'emisores': data2,
             })
 
         if data[0]['OBSERVACION'] == "INGRESO EXITOSO":
@@ -33,16 +36,19 @@ def login(request):
                     'data': data,
                 })   
             else:
-                return render(request, 'exception.html', {
-                    'message': "Emisor mal registrado"
+                return render(request, 'index.html', {
+                    'message': "Emisor mal registrado",
+                    'emisores': data2,
                 })
         else:
-            return render(request, 'exception.html', {
-                'message': "Usuario o contraseña incorrectos"
+            return render(request, 'index.html', {
+                'message': "Usuario o contraseña incorrectos",
+                'emisores': data2,
             })  
     else:
-        return render(request, 'exception.html',{
-            'message': "Usuario o contraseña incorrectos"
+        return render(request, 'index.html',{
+            'message': "Usuario o contraseña incorrectos",
+            'emisores': data2,
         })
     
 
@@ -586,5 +592,13 @@ def pagTipoContrato(request):
     data = url.json()
 
     return render(request, 'tipoContrato.html',{
+        'data': data,
+    })
+
+def pagEstadoTrabajador(request):
+    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/EstadoTrabajador")
+    data = url.json()
+
+    return render(request, 'estadotrabajador.html',{
         'data': data,
     })

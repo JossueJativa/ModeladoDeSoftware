@@ -71,6 +71,9 @@
             <h1>Login</h1>
             <input class="control" type="text" name="username" placeholder="Usuario"><br>
             <input class="control" type="password" name="password" placeholder="Contraseña"><br>
+            {% if message %}
+                <a style="color: red;">{{message}}</a>
+            {% endif %}
             <div class="form-group">
                 Emisor:<select name="emisor">
                     {% for data in emisores %}
