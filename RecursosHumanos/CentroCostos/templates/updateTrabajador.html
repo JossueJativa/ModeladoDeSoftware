@@ -6,120 +6,121 @@
 
 {% block body %}
     <h1>Agregar un trabajador nuevo</h1>
-
-    <form action="{% url 'trabajadoresPost' %}" method="post">
-        {% csrf_token %}
-        COMP_Codigo: <input type="text" class="form-control" id="COMP_Codigo" name="COMP_Codigo" value="{{id}}" disabled></form>
-        Tipo_trabajador: <select name="Tipo_trabajador">
-            {% for data in dataTipoTrabajador %}
-                <option>{{data.Codigo}}</option>
-            {% endfor %}
-        </select></br>
-        Apellido_Paterno: <input type="text" class="form-control" id="Apellido_Paterno" name="Apellido_Paterno" value="{{data2.Apellido_Paterno}}"></br>
-        Apellido_Materno: <input type="text" class="form-control" id="Apellido_Materno" name="Apellido_Materno" value="{{data2.Apellido_Materno}}"></br>
-        Nombres: <input type="text" class="form-control" id="Nombres" name="Nombres" value="{{data2.Nombres}}"></br>
-        Identificacion: <input type="text" class="form-control" id="Identificacion" name="Identificacion" value="{{data2.Identificacion}}"></br>
-        Entidad_Bancaria: <input type="text" class="form-control" id="Entidad_Bancaria" name="Entidad_Bancaria" value="{{data2.Entidad_Bancaria}}"></br>
-        CarnetIESS: <input type="text" class="form-control" id="CarnetIESS" name="CarnetIESS" value="{{data2.CarnetIESS}}" value="{{data2.CarnetIESS}}"></br>
-        Direccion: <input type="text" class="form-control" id="Direccion" name="Direccion" value="{{data2.Direccion}}"></br>
-        Telefono_Fijo: <input type="text" class="form-control" id="Telefono_Fijo" name="Telefono_Fijo" value="{{data2.Telefono_Fijo}}"></br>
-        Telefono_Movil: <input type="text" class="form-control" id="Telefono_Movil" name="Telefono_Movil" value="{{data2.Telefono_Movil}}"></br>
-        Tipo de trabjo anteriormente seleccionado: value="{{data.Tipo_trabajador}}" </br>
-        Tipo_trabajador: <select name="Tipo_trabajador">
-            {% for data in dataGenero %}
-                <option>{{data.Codigo}}</option>
-            {% endfor %}
-        </select></br>
-        Nro_Cuenta_Bancaria: <input type="text" class="form-control" id="Nro_Cuenta_Bancaria" name="Nro_Cuenta_Bancaria"  value="{{data2.Nro_Cuenta_Bancaria}}"></br>
-        Codigo_Categoria_Ocupacion anteriormente seleccionado: value="{{data2.Codigo_Categoria_Ocupacion}}" </br>
-        Codigo_Categoria_Ocupacion: <select name="Codigo_Categoria_Ocupacion">
-            {% for data in dataCategoriaOcupacional %}
-                <option>{{data.Codigo}}</option>
-            {% endfor %}
-        </select></br>
-        Ocupacion anteriormente seleccionado: value="{{data2.Ocupacion}}" </br>
-        Ocupacion: <select name="Ocupacion">
-            {% for data in dataCategoriaOcupacional %}
-                <option>{{data.Codigo}}</option>
-            {% endfor %}
-        </select></br>
-        Centro_Costos: <input type="text" class="form-control" id="Centro_Costos" name="Centro_Costos" value="{{data2.Centro_Costos}}"></br>
-        Nivel_Salarial anteriormente seleccionado: value="{{data2.Nivel_Salarial}}" </br>
-        Nivel_Salarial: <select name="Nivel_Salarial">
-            {% for data in dataNivelSalarial %}
-                <option>{{data.Codigo}}</option>
-            {% endfor %}
-        </select></br>
-        EstadoTrabajador: <input type="text" class="form-control" id="EstadoTrabajador" name="EstadoTrabajador" value="{{data2.EstadoTrabajador}}"></br>
-        Tipo_Contrato anteriormente seleccionado: value="{{data2.Tipo_Contrato}}" </br>
-        Tipo_Contrato <select name="Tipo_Contrato">
-            {% for data in dataTipoContrato %}
-                <option>{{data.Descripcion}}</option>
-            {% endfor %}
-        </select></br>
-        Tipo_Cese anteriormente seleccionado: value="{{data2.Tipo_Cese}}" </br>
-        Tipo_Cese: <select name="Tipo_Cese">
-            {% for data in dataTipoCese %}
-                <option>{{data.Descripcion}}</option>
-            {% endfor %}
-        </select></br>
-        EstadoCivil anteriormente seleccionado: value="{{data2.EstadoCivil}}" </br>
-        EstadoCivil: <select name="EstadoCivil">
-            {% for data in dataEstadoCivil %}
-                <option>{{data.Descripcion}}</option>
-            {% endfor %}
-        </select></br>
-        TipoodeComision anteriormente seleccionado: value="{{data2.TipodeComision}}" </br>
-        TipodeComision: <select name="TipodeComision">
-            {% for data in dataTipoComision %}
-                <option>{{data.Descripcion}}</option>
-            {% endfor %}
-        </select></br>
-        fecha de nacimiento anteriormente seleccionado: value="{{data2.FechaNacimiento}}" </br>
-        FechaNacimiento: <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" value="{{data2.FechaNacimiento}}"></br>
-        fecha de ingreso anteriormente seleccionado: value="{{data2.FechaIngreso}}" </br>
-        FechaIngreso: <input type="date" class="form-control" id="FechaIngreso" name="FechaIngreso" value="{{data2.FechaIngreso}}"></br>
-        fecha de cese anteriormente seleccionado: value="{{data2.FechaCese}}" </br>
-        FechaCese: <input type="date" class="form-control" id="FechaCese" name="FechaCese" value="{{data2.FechaCese}}"></br>
-        PeriododeVacaciones anteriormente seleccionado: value="{{data2.PeriododeVacaciones}}" </br>
-        PeriododeVacaciones: <select name="PeriododeVacaciones">
-            {% for data in dataPeriodoVacaciones %}
-                <option>{{data.Descripcion}}</option>
-            {% endfor %}
-        </select></br>
-        fecha de reingreso anteriormente seleccionado: value="{{data2.FechaReingreso}}" </br>
-        FechaReingreso: <input type="date" class="form-control" id="FechaReingreso" name="FechaReingreso" value="{{data2.FechaReingreso}}"></br>
-        fecha de ultima actializacion anteriormente puesto: value="{{data2.Fecha_Ult_Actualizacion}}" </br>
-        Fecha_Ult_Actualizacion: <input type="date" class="form-control" id="Fecha_Ult_Actualizacion" name="Fecha_Ult_Actualizacion" value="Fecha_Ult_Actualizacion"></br>
-        EsReingreso anteriormente seleccionado: value="{{data2.EsReingreso}}" </br>
-        EsReingreso: <select name="EsReingreso">
-            {% for data in dataEsReingreso %}
-                <option>{{data.Descripcion}}</option>
-            {% endfor %}
-        </select></br>
-        Tipo_Cuenta anteriormente seleccionado: value="{{data2.Tipo_Cuenta}}" </br>
-        Tipo_Cuenta: <select name="Tipo_Cuenta">
-            {% for data in dataTipoCuenta %}
-                <option>{{data.Descripcion}}</option>
-            {% endfor %}
-        </select></br>
-        FormaCalculo13ro anteriormente seleccionado: value="{{data2.FormaCalculo13ro}}" </br>
-        FormaCalculo13ro: <select name="FormaCalculo13ro">
-            {% for data in dataDecimoTerceroDecimoCuarto %}
-                <option>{{data.Codigo}}</option>
-            {% endfor %}
-        </select></br>
-        FormaCalculo14ro anteriormente seleccionado: value="{{data2.FormaCalculo14ro}}" </br>
-        FormaCalculo14ro: <select name="FormaCalculo14ro">
-            {% for data in dataDecimoTerceroDecimoCuarto %}
-                <option>{{data.Codigo}}</option>
-            {% endfor %}
-        </select></br>
-        BoniComplementaria: <input type="text" class="form-control" id="BoniComplementaria" name="BoniComplementaria" value="{{data2.BoniComplementaria}}"></br>
-        BoniEspecial: <input type="text" class="form-control" id="BoniEspecial" name="BoniEspecial" value="{{data2.BoniEspecial}}"></br>
-        Remuneracion_Minima: <input type="text" class="form-control" id="Remuneracion_Minima" name="Remuneracion_Minima" value="{{data2.Remuneracion_Minima}}"></br>
-        Fondo_Reserva: <input type="text" class="form-control" id="Fondo_Reserva" name="Fondo_Reserva" value="{{data2.Fondo_Reserva}}"></br>
-        Mensaje: <input type="text" class="form-control" id="Mensaje" name="Mensaje" value="{{data2.Mensaje}}"></br>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-    </form>
+    <div class="formulario">
+        <form action="{% url 'trabajadoresPost' %}" method="post">
+            {% csrf_token %}
+            COMP_Codigo: <input type="text" class="form-control" id="COMP_Codigo" name="COMP_Codigo" value="{{id}}" disabled></form>
+            Tipo_trabajador: <select name="Tipo_trabajador">
+                {% for data in dataTipoTrabajador %}
+                    <option>{{data.Codigo}}</option>
+                {% endfor %}
+            </select></br>
+            Apellido_Paterno: <input type="text" class="form-control" id="Apellido_Paterno" name="Apellido_Paterno" value="{{data2.Apellido_Paterno}}"></br>
+            Apellido_Materno: <input type="text" class="form-control" id="Apellido_Materno" name="Apellido_Materno" value="{{data2.Apellido_Materno}}"></br>
+            Nombres: <input type="text" class="form-control" id="Nombres" name="Nombres" value="{{data2.Nombres}}"></br>
+            Identificacion: <input type="text" class="form-control" id="Identificacion" name="Identificacion" value="{{data2.Identificacion}}"></br>
+            Entidad_Bancaria: <input type="text" class="form-control" id="Entidad_Bancaria" name="Entidad_Bancaria" value="{{data2.Entidad_Bancaria}}"></br>
+            CarnetIESS: <input type="text" class="form-control" id="CarnetIESS" name="CarnetIESS" value="{{data2.CarnetIESS}}" value="{{data2.CarnetIESS}}"></br>
+            Direccion: <input type="text" class="form-control" id="Direccion" name="Direccion" value="{{data2.Direccion}}"></br>
+            Telefono_Fijo: <input type="text" class="form-control" id="Telefono_Fijo" name="Telefono_Fijo" value="{{data2.Telefono_Fijo}}"></br>
+            Telefono_Movil: <input type="text" class="form-control" id="Telefono_Movil" name="Telefono_Movil" value="{{data2.Telefono_Movil}}"></br>
+            Tipo de trabjo anteriormente seleccionado: value="{{data.Tipo_trabajador}}" </br>
+            Tipo_trabajador: <select name="Tipo_trabajador">
+                {% for data in dataGenero %}
+                    <option>{{data.Codigo}}</option>
+                {% endfor %}
+            </select></br>
+            Nro_Cuenta_Bancaria: <input type="text" class="form-control" id="Nro_Cuenta_Bancaria" name="Nro_Cuenta_Bancaria"  value="{{data2.Nro_Cuenta_Bancaria}}"></br>
+            Codigo_Categoria_Ocupacion anteriormente seleccionado: value="{{data2.Codigo_Categoria_Ocupacion}}" </br>
+            Codigo_Categoria_Ocupacion: <select name="Codigo_Categoria_Ocupacion">
+                {% for data in dataCategoriaOcupacional %}
+                    <option>{{data.Codigo}}</option>
+                {% endfor %}
+            </select></br>
+            Ocupacion anteriormente seleccionado: value="{{data2.Ocupacion}}" </br>
+            Ocupacion: <select name="Ocupacion">
+                {% for data in dataCategoriaOcupacional %}
+                    <option>{{data.Codigo}}</option>
+                {% endfor %}
+            </select></br>
+            Centro_Costos: <input type="text" class="form-control" id="Centro_Costos" name="Centro_Costos" value="{{data2.Centro_Costos}}"></br>
+            Nivel_Salarial anteriormente seleccionado: value="{{data2.Nivel_Salarial}}" </br>
+            Nivel_Salarial: <select name="Nivel_Salarial">
+                {% for data in dataNivelSalarial %}
+                    <option>{{data.Codigo}}</option>
+                {% endfor %}
+            </select></br>
+            EstadoTrabajador: <input type="text" class="form-control" id="EstadoTrabajador" name="EstadoTrabajador" value="{{data2.EstadoTrabajador}}"></br>
+            Tipo_Contrato anteriormente seleccionado: value="{{data2.Tipo_Contrato}}" </br>
+            Tipo_Contrato <select name="Tipo_Contrato">
+                {% for data in dataTipoContrato %}
+                    <option>{{data.Descripcion}}</option>
+                {% endfor %}
+            </select></br>
+            Tipo_Cese anteriormente seleccionado: value="{{data2.Tipo_Cese}}" </br>
+            Tipo_Cese: <select name="Tipo_Cese">
+                {% for data in dataTipoCese %}
+                    <option>{{data.Descripcion}}</option>
+                {% endfor %}
+            </select></br>
+            EstadoCivil anteriormente seleccionado: value="{{data2.EstadoCivil}}" </br>
+            EstadoCivil: <select name="EstadoCivil">
+                {% for data in dataEstadoCivil %}
+                    <option>{{data.Descripcion}}</option>
+                {% endfor %}
+            </select></br>
+            TipoodeComision anteriormente seleccionado: value="{{data2.TipodeComision}}" </br>
+            TipodeComision: <select name="TipodeComision">
+                {% for data in dataTipoComision %}
+                    <option>{{data.Descripcion}}</option>
+                {% endfor %}
+            </select></br>
+            fecha de nacimiento anteriormente seleccionado: value="{{data2.FechaNacimiento}}" </br>
+            FechaNacimiento: <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" value="{{data2.FechaNacimiento}}"></br>
+            fecha de ingreso anteriormente seleccionado: value="{{data2.FechaIngreso}}" </br>
+            FechaIngreso: <input type="date" class="form-control" id="FechaIngreso" name="FechaIngreso" value="{{data2.FechaIngreso}}"></br>
+            fecha de cese anteriormente seleccionado: value="{{data2.FechaCese}}" </br>
+            FechaCese: <input type="date" class="form-control" id="FechaCese" name="FechaCese" value="{{data2.FechaCese}}"></br>
+            PeriododeVacaciones anteriormente seleccionado: value="{{data2.PeriododeVacaciones}}" </br>
+            PeriododeVacaciones: <select name="PeriododeVacaciones">
+                {% for data in dataPeriodoVacaciones %}
+                    <option>{{data.Descripcion}}</option>
+                {% endfor %}
+            </select></br>
+            fecha de reingreso anteriormente seleccionado: value="{{data2.FechaReingreso}}" </br>
+            FechaReingreso: <input type="date" class="form-control" id="FechaReingreso" name="FechaReingreso" value="{{data2.FechaReingreso}}"></br>
+            fecha de ultima actializacion anteriormente puesto: value="{{data2.Fecha_Ult_Actualizacion}}" </br>
+            Fecha_Ult_Actualizacion: <input type="date" class="form-control" id="Fecha_Ult_Actualizacion" name="Fecha_Ult_Actualizacion" value="Fecha_Ult_Actualizacion"></br>
+            EsReingreso anteriormente seleccionado: value="{{data2.EsReingreso}}" </br>
+            EsReingreso: <select name="EsReingreso">
+                {% for data in dataEsReingreso %}
+                    <option>{{data.Descripcion}}</option>
+                {% endfor %}
+            </select></br>
+            Tipo_Cuenta anteriormente seleccionado: value="{{data2.Tipo_Cuenta}}" </br>
+            Tipo_Cuenta: <select name="Tipo_Cuenta">
+                {% for data in dataTipoCuenta %}
+                    <option>{{data.Descripcion}}</option>
+                {% endfor %}
+            </select></br>
+            FormaCalculo13ro anteriormente seleccionado: value="{{data2.FormaCalculo13ro}}" </br>
+            FormaCalculo13ro: <select name="FormaCalculo13ro">
+                {% for data in dataDecimoTerceroDecimoCuarto %}
+                    <option>{{data.Codigo}}</option>
+                {% endfor %}
+            </select></br>
+            FormaCalculo14ro anteriormente seleccionado: value="{{data2.FormaCalculo14ro}}" </br>
+            FormaCalculo14ro: <select name="FormaCalculo14ro">
+                {% for data in dataDecimoTerceroDecimoCuarto %}
+                    <option>{{data.Codigo}}</option>
+                {% endfor %}
+            </select></br>
+            BoniComplementaria: <input type="text" class="form-control" id="BoniComplementaria" name="BoniComplementaria" value="{{data2.BoniComplementaria}}"></br>
+            BoniEspecial: <input type="text" class="form-control" id="BoniEspecial" name="BoniEspecial" value="{{data2.BoniEspecial}}"></br>
+            Remuneracion_Minima: <input type="text" class="form-control" id="Remuneracion_Minima" name="Remuneracion_Minima" value="{{data2.Remuneracion_Minima}}"></br>
+            Fondo_Reserva: <input type="text" class="form-control" id="Fondo_Reserva" name="Fondo_Reserva" value="{{data2.Fondo_Reserva}}"></br>
+            Mensaje: <input type="text" class="form-control" id="Mensaje" name="Mensaje" value="{{data2.Mensaje}}"></br>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
 {% endblock  %}

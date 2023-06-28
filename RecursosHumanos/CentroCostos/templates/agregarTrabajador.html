@@ -6,102 +6,103 @@
 
 {% block body %}
     <h1>Agregar un trabajador nuevo</h1>
-
-    <form action="{% url 'trabajadoresPost' %}" method="post">
-        {% csrf_token %}
-        COMP_Codigo: <input type="text" class="form-control" id="COMP_Codigo" name="COMP_Codigo" value="{{id}}" disabled></form>
-        Tipo_trabajador: <select name="Tipo_trabajador">
-            {% for data in dataTipoTrabajador %}
-                <option>{{data.Codigo}}</option>
-            {% endfor %}
-        </select></br>
-        Apellido_Paterno: <input type="text" class="form-control" id="Apellido_Paterno" name="Apellido_Paterno"></br>
-        Apellido_Materno: <input type="text" class="form-control" id="Apellido_Materno" name="Apellido_Materno"></br>
-        Nombres: <input type="text" class="form-control" id="Nombres" name="Nombres"></br>
-        Identificacion: <input type="text" class="form-control" id="Identificacion" name="Identificacion"></br>
-        Entidad_Bancaria: <input type="text" class="form-control" id="Entidad_Bancaria" name="Entidad_Bancaria"></br>
-        CarnetIESS: <input type="text" class="form-control" id="CarnetIESS" name="CarnetIESS"></br>
-        Direccion: <input type="text" class="form-control" id="Direccion" name="Direccion"></br>
-        Telefono_Fijo: <input type="text" class="form-control" id="Telefono_Fijo" name="Telefono_Fijo"></br>
-        Telefono_Movil: <input type="text" class="form-control" id="Telefono_Movil" name="Telefono_Movil"></br>
-        Tipo_trabajador: <select name="Tipo_trabajador">
-            {% for data in dataGenero %}
-                <option>{{data.Codigo}}</option>
-            {% endfor %}
-        </select></br>
-        Nro_Cuenta_Bancaria: <input type="text" class="form-control" id="Nro_Cuenta_Bancaria" name="Nro_Cuenta_Bancaria"></br>
-        Codigo_Categoria_Ocupacion: <select name="Codigo_Categoria_Ocupacion">
-            {% for data in dataCategoriaOcupacional %}
-                <option>{{data.Codigo}}</option>
-            {% endfor %}
-        </select></br>
-        Ocupacion: <select name="Ocupacion">
-            {% for data in dataCategoriaOcupacional %}
-                <option>{{data.Codigo}}</option>
-            {% endfor %}
-        </select></br>
-        Centro_Costos: <input type="text" class="form-control" id="Centro_Costos" name="Centro_Costos"></br>
-        Nivel_Salarial: <select name="Nivel_Salarial">
-            {% for data in dataNivelSalarial %}
-                <option>{{data.Codigo}}</option>
-            {% endfor %}
-        </select></br>
-        EstadoTrabajador: <input type="text" class="form-control" id="EstadoTrabajador" name="EstadoTrabajador"></br>
-        Tipo_Contrato <select name="Tipo_Contrato">
-            {% for data in dataTipoContrato %}
-                <option>{{data.Descripcion}}</option>
-            {% endfor %}
-        </select></br>
-        Tipo_Cese: <select name="Tipo_Cese">
-            {% for data in dataTipoCese %}
-                <option>{{data.Descripcion}}</option>
-            {% endfor %}
-        </select></br>
-        EstadoCivil: <select name="EstadoCivil">
-            {% for data in dataEstadoCivil %}
-                <option>{{data.Descripcion}}</option>
-            {% endfor %}
-        </select></br>
-        TipodeComision: <select name="TipodeComision">
-            {% for data in dataTipoComision %}
-                <option>{{data.Descripcion}}</option>
-            {% endfor %}
-        </select></br>
-        FechaNacimiento: <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento"></br>
-        FechaIngreso: <input type="date" class="form-control" id="FechaIngreso" name="FechaIngreso"></br>
-        FechaCese: <input type="date" class="form-control" id="FechaCese" name="FechaCese"></br>
-        PeriododeVacaciones: <select name="PeriododeVacaciones">
-            {% for data in dataPeriodoVacaciones %}
-                <option>{{data.Descripcion}}</option>
-            {% endfor %}
-        </select></br>
-        FechaReingreso: <input type="date" class="form-control" id="FechaReingreso" name="FechaReingreso"></br>
-        Fecha_Ult_Actualizacion: <input type="date" class="form-control" id="Fecha_Ult_Actualizacion" name="Fecha_Ult_Actualizacion"></br>
-        EsReingreso: <select name="EsReingreso">
-            {% for data in dataEsReingreso %}
-                <option>{{data.Descripcion}}</option>
-            {% endfor %}
-        </select></br>
-        Tipo_Cuenta: <select name="Tipo_Cuenta">
-            {% for data in dataTipoCuenta %}
-                <option>{{data.Descripcion}}</option>
-            {% endfor %}
-        </select></br>
-        FormaCalculo13ro: <select name="FormaCalculo13ro">
-            {% for data in dataDecimoTerceroDecimoCuarto %}
-                <option>{{data.Codigo}}</option>
-            {% endfor %}
-        </select></br>
-        FormaCalculo14ro: <select name="FormaCalculo14ro">
-            {% for data in dataDecimoTerceroDecimoCuarto %}
-                <option>{{data.Codigo}}</option>
-            {% endfor %}
-        </select></br>
-        BoniComplementaria: <input type="text" class="form-control" id="BoniComplementaria" name="BoniComplementaria"></br>
-        BoniEspecial: <input type="text" class="form-control" id="BoniEspecial" name="BoniEspecial"></br>
-        Remuneracion_Minima: <input type="text" class="form-control" id="Remuneracion_Minima" name="Remuneracion_Minima"></br>
-        Fondo_Reserva: <input type="text" class="form-control" id="Fondo_Reserva" name="Fondo_Reserva"></br>
-        Mensaje: <input type="text" class="form-control" id="Mensaje" name="Mensaje"></br>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-    </form>
+    <div class="formulario">
+        <form action="{% url 'trabajadoresPost' %}" method="post">
+            {% csrf_token %}
+            COMP_Codigo: <input type="text" class="form-control" id="COMP_Codigo" name="COMP_Codigo" value="{{id}}" disabled></form>
+            Tipo_trabajador: <select name="Tipo_trabajador">
+                {% for data in dataTipoTrabajador %}
+                    <option>{{data.Codigo}}</option>
+                {% endfor %}
+            </select></br>
+            Apellido_Paterno: <input type="text" class="form-control" id="Apellido_Paterno" name="Apellido_Paterno"></br>
+            Apellido_Materno: <input type="text" class="form-control" id="Apellido_Materno" name="Apellido_Materno"></br>
+            Nombres: <input type="text" class="form-control" id="Nombres" name="Nombres"></br>
+            Identificacion: <input type="text" class="form-control" id="Identificacion" name="Identificacion"></br>
+            Entidad_Bancaria: <input type="text" class="form-control" id="Entidad_Bancaria" name="Entidad_Bancaria"></br>
+            CarnetIESS: <input type="text" class="form-control" id="CarnetIESS" name="CarnetIESS"></br>
+            Direccion: <input type="text" class="form-control" id="Direccion" name="Direccion"></br>
+            Telefono_Fijo: <input type="text" class="form-control" id="Telefono_Fijo" name="Telefono_Fijo"></br>
+            Telefono_Movil: <input type="text" class="form-control" id="Telefono_Movil" name="Telefono_Movil"></br>
+            Tipo_trabajador: <select name="Tipo_trabajador">
+                {% for data in dataGenero %}
+                    <option>{{data.Codigo}}</option>
+                {% endfor %}
+            </select></br>
+            Nro_Cuenta_Bancaria: <input type="text" class="form-control" id="Nro_Cuenta_Bancaria" name="Nro_Cuenta_Bancaria"></br>
+            Codigo_Categoria_Ocupacion: <select name="Codigo_Categoria_Ocupacion">
+                {% for data in dataCategoriaOcupacional %}
+                    <option>{{data.Codigo}}</option>
+                {% endfor %}
+            </select></br>
+            Ocupacion: <select name="Ocupacion">
+                {% for data in dataCategoriaOcupacional %}
+                    <option>{{data.Codigo}}</option>
+                {% endfor %}
+            </select></br>
+            Centro_Costos: <input type="text" class="form-control" id="Centro_Costos" name="Centro_Costos"></br>
+            Nivel_Salarial: <select name="Nivel_Salarial">
+                {% for data in dataNivelSalarial %}
+                    <option>{{data.Codigo}}</option>
+                {% endfor %}
+            </select></br>
+            EstadoTrabajador: <input type="text" class="form-control" id="EstadoTrabajador" name="EstadoTrabajador"></br>
+            Tipo_Contrato <select name="Tipo_Contrato">
+                {% for data in dataTipoContrato %}
+                    <option>{{data.Descripcion}}</option>
+                {% endfor %}
+            </select></br>
+            Tipo_Cese: <select name="Tipo_Cese">
+                {% for data in dataTipoCese %}
+                    <option>{{data.Descripcion}}</option>
+                {% endfor %}
+            </select></br>
+            EstadoCivil: <select name="EstadoCivil">
+                {% for data in dataEstadoCivil %}
+                    <option>{{data.Descripcion}}</option>
+                {% endfor %}
+            </select></br>
+            TipodeComision: <select name="TipodeComision">
+                {% for data in dataTipoComision %}
+                    <option>{{data.Descripcion}}</option>
+                {% endfor %}
+            </select></br>
+            FechaNacimiento: <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento"></br>
+            FechaIngreso: <input type="date" class="form-control" id="FechaIngreso" name="FechaIngreso"></br>
+            FechaCese: <input type="date" class="form-control" id="FechaCese" name="FechaCese"></br>
+            PeriododeVacaciones: <select name="PeriododeVacaciones">
+                {% for data in dataPeriodoVacaciones %}
+                    <option>{{data.Descripcion}}</option>
+                {% endfor %}
+            </select></br>
+            FechaReingreso: <input type="date" class="form-control" id="FechaReingreso" name="FechaReingreso"></br>
+            Fecha_Ult_Actualizacion: <input type="date" class="form-control" id="Fecha_Ult_Actualizacion" name="Fecha_Ult_Actualizacion"></br>
+            EsReingreso: <select name="EsReingreso">
+                {% for data in dataEsReingreso %}
+                    <option>{{data.Descripcion}}</option>
+                {% endfor %}
+            </select></br>
+            Tipo_Cuenta: <select name="Tipo_Cuenta">
+                {% for data in dataTipoCuenta %}
+                    <option>{{data.Descripcion}}</option>
+                {% endfor %}
+            </select></br>
+            FormaCalculo13ro: <select name="FormaCalculo13ro">
+                {% for data in dataDecimoTerceroDecimoCuarto %}
+                    <option>{{data.Codigo}}</option>
+                {% endfor %}
+            </select></br>
+            FormaCalculo14ro: <select name="FormaCalculo14ro">
+                {% for data in dataDecimoTerceroDecimoCuarto %}
+                    <option>{{data.Codigo}}</option>
+                {% endfor %}
+            </select></br>
+            BoniComplementaria: <input type="text" class="form-control" id="BoniComplementaria" name="BoniComplementaria"></br>
+            BoniEspecial: <input type="text" class="form-control" id="BoniEspecial" name="BoniEspecial"></br>
+            Remuneracion_Minima: <input type="text" class="form-control" id="Remuneracion_Minima" name="Remuneracion_Minima"></br>
+            Fondo_Reserva: <input type="text" class="form-control" id="Fondo_Reserva" name="Fondo_Reserva"></br>
+            Mensaje: <input type="text" class="form-control" id="Mensaje" name="Mensaje"></br>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
 {% endblock  %}
