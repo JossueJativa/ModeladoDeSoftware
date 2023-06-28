@@ -189,24 +189,13 @@ def eliminarMovimientoPlanilla (request, id):
         url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")
         data = url.json()
 
-        #Filter by priority
-        data = sorted(data, key=lambda k: k['Prioridad'], reverse=True)
-
         # buscar por Concepto
         for datos in data:
             if datos['CodigoConcepto'] == int(id):
                 concepto = datos['Concepto']
-                ##Quitar los espacios entre palabras
-                concepto = concepto.replace(" ", "&")
 
-        try:
-            url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimeintoPlanillaDelete?codigomovimiento="+id+
-                               "&descripcionomovimiento="+concepto)
-            data = url.json()
-        except:
-            return render(request, 'exceptiondentro.html', {
-                'message': "Error al eliminar el movimiento de planilla"
-            })
+        url = requests.delete("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimeintoPlanillaDelete?codigomovimiento="+id+
+                            "&descripcionomovimiento="+concepto)
         
         url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaSelect")
         data = url.json()
