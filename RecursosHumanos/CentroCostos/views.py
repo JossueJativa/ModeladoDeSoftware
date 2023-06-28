@@ -382,5 +382,51 @@ def PagTrabajadores (request):
 
         return render(request, 'infoTrabajador.html',{
         'data': data,
+        'id': id,
         })
+
+def PagTrabajadoresCreate (request, id):
+    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/GetEmisor")
+    dataSucursal = url.json()
+    url2 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoTrabajador")
+    dataTipoTrabajador = url2.json()
+    url3 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/Genero")
+    dataGenero = url3.json()
+    url4 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CategoriaOcupacional")
+    dataCategoriaOcupacional = url4.json()
+    url5 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/NivelSalarial")
+    dataNivelSalarial = url5.json()
+    url6 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoContrato")
+    dataTipoContrato = url6.json()
+    url7 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoCese")
+    dataTipoCese = url7.json()
+    url8 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/EstadoCivil")
+    dataEstadoCivil = url8.json()
+    url9 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoComision")
+    dataTipoComision = url9.json()
+    url10 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/PeriodoVacaciones")
+    dataPeriodoVacaciones = url10.json()
+    url11 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/EsReingreso")
+    dataEsReingreso = url11.json()
+    url12 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoCuenta")
+    dataTipoCuenta = url12.json()
+    url13 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/DecimoTerceroDecimoCuarto")
+    dataDecimoTerceroDecimoCuarto = url13.json()
+
+    return render(request, 'agregarTrabajador.html',{
+        'id': id,
+        'dataSucursal': dataSucursal,
+        'dataTipoTrabajador': dataTipoTrabajador,
+        'dataGenero': dataGenero,
+        'dataCategoriaOcupacional': dataCategoriaOcupacional,
+        'dataNivelSalarial': dataNivelSalarial,
+        'dataTipoContrato': dataTipoContrato,
+        'dataTipoCese': dataTipoCese,
+        'dataEstadoCivil': dataEstadoCivil,
+        'dataTipoComision': dataTipoComision,
+        'dataPeriodoVacaciones': dataPeriodoVacaciones,
+        'dataEsReingreso': dataEsReingreso,
+        'dataTipoCuenta': dataTipoCuenta,
+        'dataDecimoTerceroDecimoCuarto': dataDecimoTerceroDecimoCuarto,
+    })
         

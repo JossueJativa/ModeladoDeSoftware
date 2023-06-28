@@ -21,4 +21,5 @@ urlpatterns = [
     path('PagTipoTrabajador', views.PagbuscarTrabajadores, name='PagTipoTrabajador'),
     path('eliminarMovimientoPlanilla/<str:id>', views.eliminarMovimientoPlanilla, name='eliminarMovimientoPlanilla'),
     path('PagTrabajadores', views.PagTrabajadores, name='PagTrabajadores'),
+    path('PagTrabajadoresCreate/<str:id>', views.PagTrabajadoresCreate, name='PagTrabajadoresCreate'),
 ]
