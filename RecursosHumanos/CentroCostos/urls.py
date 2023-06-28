@@ -25,4 +25,5 @@ urlpatterns = [
     path('trabajadoresPost', views.trabajadoresPost, name='trabajadoresPost'),
     path('trabajadoresupdate/<str:id>/<str:id2>', views.trabajadoresupdate, name='trabajadoresupdate'),
     path('trabajadoresDelete/<str:id>/<str:id2>', views.trabajadoresDelete, name='trabajadoresDelete'),
+    path('buscartrabajador/<str:id>', views.buscartrabajador, name='buscartrabajador'),
 ]

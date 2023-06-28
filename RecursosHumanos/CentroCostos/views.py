@@ -544,3 +544,19 @@ def trabajadoresDelete (request, id, id2):
         'data': data,
         'id': id,
     })
+
+def buscartrabajador(request, id):
+    if request.method == "POST":
+        Codigo = request.POST['Codigo']
+
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorSelect?sucursal="+id) ##Ir a las sucursales
+        data = url.json()
+        for i in data: ##Buscar trabajador de las sucursales
+            if i['Id_Trabajador'] == int(Codigo):
+                data2 = i
+        
+        return render(request, 'Searchtrabajador.html',{
+            'data2': data2,
+            'id': id,
+        })
+        

@@ -8,9 +8,9 @@
     <h1>Trabajadores</h1>
 
     Buscar trabajadores:
-    <form action="#" method="post">
+    <form action="{% url 'buscartrabajador' id%}" method="post">
         {% csrf_token %}
-        <input type="text" name="descripcion" placeholder="Nombre de centro de costos">
+        <input type="text" name="Codigo" placeholder="Codigo de trabajador">
         <button type="submit" class="btn btn-primary">Buscar</button>
     </form>
 
