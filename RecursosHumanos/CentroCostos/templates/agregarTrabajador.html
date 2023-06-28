@@ -7,7 +7,7 @@
 {% block body %}
     <h1>Agregar un trabajador nuevo</h1>
 
-    <form action="#" method="post">
+    <form action="{% url 'trabajadoresPost' %}" method="post">
         {% csrf_token %}
         COMP_Codigo: <input type="text" class="form-control" id="COMP_Codigo" name="COMP_Codigo" value="{{id}}" disabled></form>
         Tipo_trabajador: <select name="Tipo_trabajador">

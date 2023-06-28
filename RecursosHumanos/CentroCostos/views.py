@@ -381,8 +381,8 @@ def PagTrabajadores (request):
         data = url.json()
 
         return render(request, 'infoTrabajador.html',{
-        'data': data,
-        'id': id,
+            'data': data,
+            'id': id,
         })
 
 def PagTrabajadoresCreate (request, id):
@@ -429,4 +429,52 @@ def PagTrabajadoresCreate (request, id):
         'dataTipoCuenta': dataTipoCuenta,
         'dataDecimoTerceroDecimoCuarto': dataDecimoTerceroDecimoCuarto,
     })
-        
+
+def trabajadoresPost (request):
+    if request.method == "POST":
+        COMP_Codigo = request.POST['COMP_Codigo']
+        Tipo_trabajador = request.POST['Tipo_trabajador']
+        Apellido_Paterno = request.POST['Apellido_Paterno']
+        Apellido_Materno = request.POST['Apellido_Materno']
+        Nombres = request.POST['Nombres']
+        Identificacion = request.POST['Identificacion']
+        Entidad_Bancaria = request.POST['Entidad_Bancaria']
+        CarnetIESS = request.POST['CarnetIESS']
+        Direccion = request.POST['Direccion']
+        Telefono_Fijo = request.POST['Telefono_Fijo']
+        Telefono_Movil = request.POST['Telefono_Movil']
+        Tipo_trabajador = request.POST['Tipo_trabajador']
+        Nro_Cuenta_Bancaria = request.POST['Nro_Cuenta_Bancaria']
+        Codigo_Categoria_Ocupacion = request.POST['Codigo_Categoria_Ocupacion']
+        Ocupacion = request.POST['Ocupacion']
+        Centro_Costos = request.POST['Centro_Costos']
+        Nivel_Salarial = request.POST['Nivel_Salarial']
+        EstadoTrabajador = request.POST['EstadoTrabajador']
+        Tipo_Cese = request.POST['Tipo_Cese']
+        EstadoCivil = request.POST['EstadoCivil']
+        TipodeComision = request.POST['TipodeComision']
+        FechaNacimiento = request.POST['FechaNacimiento']
+        FechaIngreso = request.POST['FechaIngreso']
+        FechaCese = request.POST['FechaCese']
+        PeriododeVacaciones = request.POST['PeriododeVacaciones']
+        FechaReingreso = request.POST['FechaReingreso']
+        Fecha_Ult_Actualizacion = request.POST['Fecha_Ult_Actualizacion']
+        EsReingreso = request.POST['EsReingreso']
+        Tipo_Cuenta = request.POST['Tipo_Cuenta']
+        FormaCalculo13ro = request.POST['FormaCalculo13ro']
+        FormaCalculo14ro = request.POST['FormaCalculo14ro']
+        BoniComplementaria = request.POST['BoniComplementaria']
+        BoniEspecial = request.POST['BoniEspecial']
+        Remuneracion_Minima = request.POST['Remuneracion_Minima']
+        Fondo_Reserva = request.POST['Fondo_Reserva']
+        Mensaje = request.POST['Mensaje']
+
+        requests.post("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorInsert?COMP_Codigo="+COMP_Codigo+"&Tipo_trabajador="+Tipo_trabajador+"&Apellido_Paterno="+Apellido_Paterno+"&Apellido_Materno="+Apellido_Materno+"&Nombres="+Nombres+"&Identificacion="+Identificacion+"&Entidad_Bancaria="+Entidad_Bancaria+"&CarnetIESS="+CarnetIESS+"&Direccion="+Direccion+"&Telefono_Fijo="+Telefono_Fijo+"&Telefono_Movil="+Telefono_Movil+"&Tipo_trabajador="+Tipo_trabajador+"&Nro_Cuenta_Bancaria="+Nro_Cuenta_Bancaria+"&Codigo_Categoria_Ocupacion="+Codigo_Categoria_Ocupacion+"&Ocupacion="+Ocupacion+"&Centro_Costos="+Centro_Costos+"&Nivel_Salarial="+Nivel_Salarial+"&EstadoTrabajador="+EstadoTrabajador+"&Tipo_Cese="+Tipo_Cese+"&EstadoCivil="+EstadoCivil+"&TipodeComision="+TipodeComision+"&FechaNacimiento="+FechaNacimiento+"&FechaIngreso="+FechaIngreso+"&FechaCese="+FechaCese+"&PeriododeVacaciones="+PeriododeVacaciones+"&FechaReingreso="+FechaReingreso+"&Fecha_Ult_Actualizacion="+Fecha_Ult_Actualizacion+"&EsReingreso="+EsReingreso+"&Tipo_Cuenta="+Tipo_Cuenta+"&FormaCalculo13ro="+FormaCalculo13ro+"&FormaCalculo14ro="+FormaCalculo14ro+"&BoniComplementaria="+BoniComplementaria+"&BoniEspecial="+BoniEspecial+"&Remuneracion_Minima="+Remuneracion_Minima+"&Fondo_Reserva="+Fondo_Reserva+"&Mensaje="+Mensaje)
+
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorSelect?sucursal="+COMP_Codigo)
+        data = url.json()
+
+        return render(request, 'infoTrabajador.html',{
+            'data': data,
+            'id': id,
+        })
