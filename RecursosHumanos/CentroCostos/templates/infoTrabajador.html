@@ -14,7 +14,7 @@
         <button type="submit" class="btn btn-primary">Buscar</button>
     </form>
 
-    <a href="{% url 'PagTrabajadoresCreate' id %}" class="btn btn-success">Agregar</a>
+    <a href="{% url 'PagTrabajadoresCreate' id %}" class="btn btn-success">Agregar<img src="https://i.ibb.co/jydyV2j/add-plus-circle-svgrepo-com.png" height="25px" width="25px"/></a>
     <!--Aqui sale un monton de numeros, sin explicacion alguna-->
     <table class="table">
         <thead class="thead-dark">
@@ -109,8 +109,8 @@
                     <td>{{datos.Remuneracion_Minima}}</tdpe=>
                     <td>{{datos.CuotaCuentaCorriente}}</td=>
                     <td>{{datos.Fondo_Reserva}}</td>
-                    <td><a class="btn btn-primary" href="{% url 'trabajadoresupdate' id datos.Id_Trabajador %}">Editar</a>
-                        <a class="btn btn-danger" href="{% url 'trabajadoresDelete' id datos.Id_Trabajador %}">Eliminar</a></td>
+                    <td><a class="btn btn-primary" href="{% url 'trabajadoresupdate' id datos.Id_Trabajador %}">Editar<img src="https://i.ibb.co/yS3QgtW/edit-svgrepo-com.png" height="25px" width="25px"/></a>
+                        <a class="btn btn-danger" href="{% url 'trabajadoresDelete' id datos.Id_Trabajador %}">Eliminar<img src="https://i.ibb.co/JmRz9Kh/delete-2-svgrepo-com.png" height="25px" width="25px"/></a></td>
                 </tr>
             {% endfor %}
         </tbody>
