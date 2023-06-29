@@ -10,7 +10,7 @@
         <form action="{%url 'edit' data.Codigo%}" method="post">
             {% csrf_token %}
             <input type="text" name="descripcion" value="{{data.NombreCentroCostos}}" placeholder="Descripcion" required>
-            <button type="submit">Editar</button>
+            <button type="submit">Editar<img src="https://i.ibb.co/yS3QgtW/edit-svgrepo-com.png" height="25px" width="25px"/></button>
         </form>
     </div>
 {% endblock  %}

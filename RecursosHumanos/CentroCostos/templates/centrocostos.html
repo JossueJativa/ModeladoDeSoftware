@@ -11,7 +11,7 @@
     <form action="{%url 'search' %}" method="post">
         {% csrf_token %}
         <input type="text" name="descripcion" placeholder="Nombre de centro de costos">
-        <button type="submit" class="btn btn-primary">Buscar</button>
+        <button type="submit" class="btn btn-primary">Buscar<img src="https://i.ibb.co/3MmNhz5/search-svgrepo-com.png" height="25px" width="25px"/></button>
     </form>
 
     <a href="{%url 'agregar'%}" class="btn btn-primary">Agregar<img src="https://i.ibb.co/jydyV2j/add-plus-circle-svgrepo-com.png" height="25px" width="25px"/></a>
