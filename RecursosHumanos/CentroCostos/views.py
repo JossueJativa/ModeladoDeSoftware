@@ -167,7 +167,7 @@ def PagMovimientoPlanilla (request):
 
     ##Filtrar por prioridad
     data = sorted(data, key=lambda k: k['Prioridad'], reverse=True)
-
+    
     return render(request, 'movimientoplanilla.html',{
         'data': data,
     })
@@ -330,7 +330,12 @@ def pushMovimientoPlantilla(request):
         Traba_Proyecto_imp_renta = request.POST['Traba_Proyecto_imp_renta']
         Aplica_Proy_Renta = request.POST['Aplica_Proy_Renta']
         Empresa_Afecta_Iess = request.POST['Empresa_Afecta_Iess']
-        
+
+        Traba_Aplica_iess = Traba_Aplica_iess + " Aplica"
+
+        if Traba_Proyecto_imp_renta == "Aplica":
+            Traba_Proyecto_imp_renta = "Si Aplica"
+
         try:
             requests.post("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/MovimientoPlanillaInsert?conceptos="+Conceptos+
                          "&prioridad="+Prioridad+"&tipooperacion="+TipoOperacion+"&cuenta1="+Cuenta1+"&cuenta2="+Cuenta2+
