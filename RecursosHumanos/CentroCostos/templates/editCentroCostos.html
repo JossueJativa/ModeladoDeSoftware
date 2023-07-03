@@ -4,8 +4,11 @@
     Editar el campo
 {% endblock  %}
 
-{% block body %}
+{% block tituloprincipal %}
     <h3>Editar el campo del codigo: {{data.Codigo}}</h3>
+{% endblock %}
+
+{% block body %}
     <div class="formulario">
         <form action="{%url 'edit' data.Codigo%}" method="post">
             {% csrf_token %}

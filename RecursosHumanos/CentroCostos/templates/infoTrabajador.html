@@ -4,17 +4,24 @@
     Trabajadores
 {% endblock  %}
 
-{% block body %}
+{% block tituloprincipal %}
     <h1>Trabajadores</h1>
+{% endblock %}
 
-    Buscar trabajadores:
+{% block buscar %}
+Buscar trabajadores:
     <form action="{% url 'buscartrabajador' id%}" method="post">
         {% csrf_token %}
         <input type="text" name="Codigo" placeholder="Codigo de trabajador">
         <button type="submit" class="btn btn-primary">Buscar<img src="https://i.ibb.co/3MmNhz5/search-svgrepo-com.png" height="25px" width="25px"/></button>
     </form>
+{% endblock %}
 
+{% block agregar %}
     <a href="{% url 'PagTrabajadoresCreate' id %}" class="btn btn-success">Agregar<img src="https://i.ibb.co/jydyV2j/add-plus-circle-svgrepo-com.png" height="25px" width="25px"/></a>
+{% endblock %}
+
+{% block body %}
     <!--Aqui sale un monton de numeros, sin explicacion alguna-->
     <table class="table">
         <thead class="thead-dark">

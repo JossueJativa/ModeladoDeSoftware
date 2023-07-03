@@ -4,8 +4,11 @@
     Busqueda de informacion
 {% endblock  %}
 
-{% block body %}
+{% block tituloprincipal %}
     <h1>Ponga la sucursal a buscar los trabajadores</h1>
+{% endblock %}
+
+{% block body %}
     <form action="{%url 'PagTrabajadores' %}" method="post">
         {% csrf_token %}
         <div class="form-group">

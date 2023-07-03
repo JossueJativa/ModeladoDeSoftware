@@ -4,17 +4,24 @@
     Movimiento de plantilla
 {% endblock  %}
 
-{% block body %}
+{% block tituloprincipal %}
     <h1>Movimiento de plantilla</h1>
+{% endblock %}
 
+{% block buscar %}
     Buscar Movimiento de plantilla por Codigo:
     <form action="PagMovimientoPlanillaSearch" method="post">
         {% csrf_token %}
         <input type="text" name="Concepto" placeholder="Concepto">
         <button type="submit" class="btn btn-primary">Buscar<img src="https://i.ibb.co/3MmNhz5/search-svgrepo-com.png" height="25px" width="25px"/></button>
     </form>
+{% endblock %}
 
+{% block agregar %}
     <a href="{% url 'PagMovimientoPlanillaCreate' %}" class="btn btn-primary">Agregar<img src="https://i.ibb.co/jydyV2j/add-plus-circle-svgrepo-com.png" height="25px" width="25px"/></a>
+{% endblock %}
+
+{% block body %}
     
     <table class="table">
         <thead class="thead-dark">

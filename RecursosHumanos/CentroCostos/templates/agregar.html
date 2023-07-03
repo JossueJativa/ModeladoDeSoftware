@@ -4,9 +4,11 @@
     Agregar centro de costos
 {% endblock  %}
 
-{% block body %}
+{% block tituloprincipal %}
     <h1>Agregar un centro de costos nuevo</h1>
+{% endblock %}
 
+{% block body %}
     <form action="{%url 'pushCentroCostos'%}" method="post">
         {% csrf_token %}
         Ingresar codigo de centro de costos: <input type="text" name="codigo" placeholder="Codigo"><br>

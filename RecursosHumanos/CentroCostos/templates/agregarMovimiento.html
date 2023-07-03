@@ -4,8 +4,11 @@
     Agregar centro de costos
 {% endblock  %}
 
-{% block body %}
+{% block tituloprincipal %}
     <h1>Agregar un Movimiento de plantilla nuevo</h1>
+{% endblock %}
+
+{% block body %}
     <div class="formulario">
         <form action="{%url 'pushMovimientoPlantilla'%}" method="post">
             {% csrf_token %}

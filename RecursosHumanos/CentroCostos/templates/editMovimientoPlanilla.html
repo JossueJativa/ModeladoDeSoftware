@@ -4,10 +4,13 @@
     Editar el campo
 {% endblock  %}
 
-{% block body %}
+{% block tituloprincipal %}
     <h3>Editar el campo del codigo: {{datos.CodigoConcepto}}</h3>
     <a>Recuerde poner los campos que son de seleccion</a></br>
     <a>Ya que aquellos no se devuelven automaticamente</a></br>
+{% endblock %}
+
+{% block body %}
     </br>
     <div class="formulario">
         <form action="{% url 'editMovimientoPlantilla' datos.CodigoConcepto %}" method="POST">
