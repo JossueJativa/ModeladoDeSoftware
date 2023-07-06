@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.urls import reverse
 import requests
 
 # Create your views here.
@@ -17,6 +16,19 @@ def login(request):
         username = request.POST['username']
         password = request.POST['password']
         emisor = request.POST['emisor']
+
+        if username == "" or password == "" or emisor == "":
+            return render(request, 'index.html', {
+                'message': "Usuario o contraseña incorrectos",
+                'emisores': data2,
+            })
+        
+        #Verificar ingreso de usuario que no ingrese letras
+        if username.isalpha() == True:
+            return render(request, 'index.html', {
+                'message': "Usuario o contraseña incorrectos",
+                'emisores': data2,
+            })
 
         try:
             url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Usuarios?usuario="+username+"&password="+password)
