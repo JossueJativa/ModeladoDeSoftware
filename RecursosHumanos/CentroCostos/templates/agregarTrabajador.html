@@ -10,7 +10,7 @@
 
 {% block body %}
     <div class="formulario">
-        <form action="{% url 'trabajadoresPost' %}" method="post">
+        <form action="{%url 'trabajadoresPost' %}" method="post">
             {% csrf_token %}
             <div class="box1">
                 <label id="COMP_Codigo" name="COMP_Codigo">COMP_Codigo:</label> 
