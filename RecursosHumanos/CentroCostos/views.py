@@ -404,8 +404,8 @@ def PagTrabajadoresCreate (request, id):
     dataTipoTrabajador = url2.json()
     url3 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/Genero")
     dataGenero = url3.json()
-    url4 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CategoriaOcupacional")
-    dataCategoriaOcupacional = url4.json()
+    url4 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/Ocupaciones")
+    dataOcupaciones = url4.json()
     url5 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/NivelSalarial")
     dataNivelSalarial = url5.json()
     url6 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoContrato")
@@ -424,13 +424,19 @@ def PagTrabajadoresCreate (request, id):
     dataTipoCuenta = url12.json()
     url13 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/DecimoTerceroDecimoCuarto")
     dataDecimoTerceroDecimoCuarto = url13.json()
+    url14 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSelect")
+    dataCentroCostos = url14.json()
+    url15 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CategoriaOcupacional")
+    dataCategoriaOcupacional = url15.json()
 
     return render(request, 'agregarTrabajador.html',{
         'id': id,
         'dataSucursal': dataSucursal,
         'dataTipoTrabajador': dataTipoTrabajador,
         'dataGenero': dataGenero,
+        'dataOcupaciones': dataOcupaciones,
         'dataCategoriaOcupacional': dataCategoriaOcupacional,
+        'datacentroCostos': dataCentroCostos,
         'dataNivelSalarial': dataNivelSalarial,
         'dataTipoContrato': dataTipoContrato,
         'dataTipoCese': dataTipoCese,
@@ -455,13 +461,14 @@ def trabajadoresPost (request):
         Direccion = request.POST['Direccion']
         Telefono_Fijo = request.POST['Telefono_Fijo']
         Telefono_Movil = request.POST['Telefono_Movil']
-        Tipo_trabajador = request.POST['Tipo_trabajador']
+        Genero = request.POST['Genero']
         Nro_Cuenta_Bancaria = request.POST['Nro_Cuenta_Bancaria']
         Codigo_Categoria_Ocupacion = request.POST['Codigo_Categoria_Ocupacion']
         Ocupacion = request.POST['Ocupacion']
         Centro_Costos = request.POST['Centro_Costos']
         Nivel_Salarial = request.POST['Nivel_Salarial']
         EstadoTrabajador = request.POST['EstadoTrabajador']
+        Tipo_Contrato = request.POST['Tipo_Contrato']
         Tipo_Cese = request.POST['Tipo_Cese']
         EstadoCivil = request.POST['EstadoCivil']
         TipodeComision = request.POST['TipodeComision']
@@ -474,14 +481,66 @@ def trabajadoresPost (request):
         EsReingreso = request.POST['EsReingreso']
         Tipo_Cuenta = request.POST['Tipo_Cuenta']
         FormaCalculo13ro = request.POST['FormaCalculo13ro']
-        FormaCalculo14ro = request.POST['FormaCalculo14ro']
+        FormaCalculo14to = request.POST['FormaCalculo14to']
         BoniComplementaria = request.POST['BoniComplementaria']
         BoniEspecial = request.POST['BoniEspecial']
         Remuneracion_Minima = request.POST['Remuneracion_Minima']
         Fondo_Reserva = request.POST['Fondo_Reserva']
         Mensaje = request.POST['Mensaje']
 
-        requests.post("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorInsert?COMP_Codigo="+COMP_Codigo+"&Tipo_trabajador="+Tipo_trabajador+"&Apellido_Paterno="+Apellido_Paterno+"&Apellido_Materno="+Apellido_Materno+"&Nombres="+Nombres+"&Identificacion="+Identificacion+"&Entidad_Bancaria="+Entidad_Bancaria+"&CarnetIESS="+CarnetIESS+"&Direccion="+Direccion+"&Telefono_Fijo="+Telefono_Fijo+"&Telefono_Movil="+Telefono_Movil+"&Tipo_trabajador="+Tipo_trabajador+"&Nro_Cuenta_Bancaria="+Nro_Cuenta_Bancaria+"&Codigo_Categoria_Ocupacion="+Codigo_Categoria_Ocupacion+"&Ocupacion="+Ocupacion+"&Centro_Costos="+Centro_Costos+"&Nivel_Salarial="+Nivel_Salarial+"&EstadoTrabajador="+EstadoTrabajador+"&Tipo_Cese="+Tipo_Cese+"&EstadoCivil="+EstadoCivil+"&TipodeComision="+TipodeComision+"&FechaNacimiento="+FechaNacimiento+"&FechaIngreso="+FechaIngreso+"&FechaCese="+FechaCese+"&PeriododeVacaciones="+PeriododeVacaciones+"&FechaReingreso="+FechaReingreso+"&Fecha_Ult_Actualizacion="+Fecha_Ult_Actualizacion+"&EsReingreso="+EsReingreso+"&Tipo_Cuenta="+Tipo_Cuenta+"&FormaCalculo13ro="+FormaCalculo13ro+"&FormaCalculo14ro="+FormaCalculo14ro+"&BoniComplementaria="+BoniComplementaria+"&BoniEspecial="+BoniEspecial+"&Remuneracion_Minima="+Remuneracion_Minima+"&Fondo_Reserva="+Fondo_Reserva+"&Mensaje="+Mensaje)
+        ##Buscar codigo categoria ocupacional
+        url15 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CategoriaOcupacional")
+        dataCategoriaOcupacional = url15.json()
+
+        for i in dataCategoriaOcupacional:
+            if i['Descripcion'] == Codigo_Categoria_Ocupacion:
+                Codigo_Categoria_Ocupacion = i['Codigo']
+
+        ##Buscar codigo de Ocupacion
+        url4 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/Ocupaciones")
+        dataOcupaciones = url4.json()
+
+        for i in dataOcupaciones:
+            if i['Descripcion'] == Ocupacion:
+                Ocupacion = i['Codigo']
+
+        ##Buscar codigo de Centro de Costos
+        url14 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSelect")
+        dataCentroCostos = url14.json()
+
+        for i in dataCentroCostos:
+            if i['Descripcion'] == Centro_Costos:
+                Centro_Costos = i['Codigo']
+
+        ##Buscar forma calculo 13
+        url13 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/DecimoTerceroDecimoCuarto")
+        dataDecimoTerceroDecimoCuarto = url13.json()
+
+        for i in dataDecimoTerceroDecimoCuarto:
+            if i['Descripcion'] == FormaCalculo13ro:
+                FormaCalculo13ro = i['Codigo']
+
+        ##Buscar forma calculo 14
+        for i in dataDecimoTerceroDecimoCuarto:
+            if i['Descripcion'] == FormaCalculo14to:
+                FormaCalculo14to = i['Codigo']
+        
+        requests.post("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorInsert?COMP_Codigo="+COMP_Codigo+
+                      "&Tipo_trabajador="+Tipo_trabajador+"&Apellido_Paterno="+Apellido_Paterno+"&Apellido_Materno="+
+                      Apellido_Materno+"&Nombres="+Nombres+"&Identificacion="+Identificacion+"&Entidad_Bancaria="+
+                      Entidad_Bancaria+"&CarnetIESS="+CarnetIESS+"&Direccion="+Direccion+"&Telefono_Fijo="+
+                      Telefono_Fijo+"&Telefono_Movil="+Telefono_Movil+"&Genero="+Genero+
+                      "&Nro_Cuenta_Bancaria="+Nro_Cuenta_Bancaria+"&Codigo_Categoria_Ocupacion="+
+                      Codigo_Categoria_Ocupacion+"&Ocupacion="+Ocupacion+"&Centro_Costos="+Centro_Costos+
+                      "&Nivel_Salarial="+Nivel_Salarial+"&EstadoTrabajador="+EstadoTrabajador+"&Tipo_Contrato="+Tipo_Contrato+
+                      "&Tipo_Cese="+Tipo_Cese+"&EstadoCivil="+EstadoCivil+"&TipodeComision="+TipodeComision+"&FechaNacimiento="+FechaNacimiento+
+                      "&FechaIngreso="+FechaIngreso+"&FechaCese="+FechaCese+"&PeriododeVacaciones="+
+                      PeriododeVacaciones+"&FechaReingreso="+FechaReingreso+"&Fecha_Ult_Actualizacion="+
+                      Fecha_Ult_Actualizacion+"&EsReingreso="+EsReingreso+"&Tipo_Cuenta="+Tipo_Cuenta+
+                      "&FormaCalculo13ro="+FormaCalculo13ro+"&FormaCalculo14ro="+FormaCalculo14to+
+                      "&BoniComplementaria="+BoniComplementaria+"&BoniEspecial="+BoniEspecial+
+                      "&Remuneracion_Minima="+Remuneracion_Minima+"&Fondo_Reserva="+Fondo_Reserva+
+                      "&Mensaje="+Mensaje)
 
         url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorSelect?sucursal="+COMP_Codigo)
         data = url.json()
@@ -525,6 +584,10 @@ def trabajadoresupdate (request, id, id2):
     dataTipoCuenta = url12.json()
     url13 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/DecimoTerceroDecimoCuarto")
     dataDecimoTerceroDecimoCuarto = url13.json()
+    url14 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSelect")
+    dataCentroCostos = url14.json()
+    url15 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/Ocupaciones")
+    dataOcupaciones = url15.json()
 
     return render(request, 'updateTrabajador.html',{
         'data2': data2,
@@ -542,6 +605,8 @@ def trabajadoresupdate (request, id, id2):
         'dataEsReingreso': dataEsReingreso,
         'dataTipoCuenta': dataTipoCuenta,
         'dataDecimoTerceroDecimoCuarto': dataDecimoTerceroDecimoCuarto,
+        'dataOcupaciones': dataOcupaciones,
+        'datacentroCostos': dataCentroCostos,
     })
 
 def trabajadoresDelete (request, id, id2):

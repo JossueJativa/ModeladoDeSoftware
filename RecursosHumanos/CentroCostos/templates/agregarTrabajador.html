@@ -12,99 +12,149 @@
     <div class="formulario">
         <form action="{% url 'trabajadoresPost' %}" method="post">
             {% csrf_token %}
-            COMP_Codigo: <input type="text" class="form-control" id="COMP_Codigo" name="COMP_Codigo" value="{{id}}" disabled></form>
-            Tipo_trabajador: <select name="Tipo_trabajador">
-                {% for data in dataTipoTrabajador %}
-                    <option>{{data.Codigo}}</option>
-                {% endfor %}
-            </select></br>
-            Apellido_Paterno: <input type="text" class="form-control" id="Apellido_Paterno" name="Apellido_Paterno"></br>
-            Apellido_Materno: <input type="text" class="form-control" id="Apellido_Materno" name="Apellido_Materno"></br>
-            Nombres: <input type="text" class="form-control" id="Nombres" name="Nombres"></br>
-            Identificacion: <input type="text" class="form-control" id="Identificacion" name="Identificacion"></br>
-            Entidad_Bancaria: <input type="text" class="form-control" id="Entidad_Bancaria" name="Entidad_Bancaria"></br>
-            CarnetIESS: <input type="text" class="form-control" id="CarnetIESS" name="CarnetIESS"></br>
-            Direccion: <input type="text" class="form-control" id="Direccion" name="Direccion"></br>
-            Telefono_Fijo: <input type="text" class="form-control" id="Telefono_Fijo" name="Telefono_Fijo"></br>
-            Telefono_Movil: <input type="text" class="form-control" id="Telefono_Movil" name="Telefono_Movil"></br>
-            Tipo_trabajador: <select name="Tipo_trabajador">
-                {% for data in dataGenero %}
-                    <option>{{data.Codigo}}</option>
-                {% endfor %}
-            </select></br>
-            Nro_Cuenta_Bancaria: <input type="text" class="form-control" id="Nro_Cuenta_Bancaria" name="Nro_Cuenta_Bancaria"></br>
-            Codigo_Categoria_Ocupacion: <select name="Codigo_Categoria_Ocupacion">
-                {% for data in dataCategoriaOcupacional %}
-                    <option>{{data.Codigo}}</option>
-                {% endfor %}
-            </select></br>
-            Ocupacion: <select name="Ocupacion">
-                {% for data in dataCategoriaOcupacional %}
-                    <option>{{data.Codigo}}</option>
-                {% endfor %}
-            </select></br>
-            Centro_Costos: <input type="text" class="form-control" id="Centro_Costos" name="Centro_Costos"></br>
-            Nivel_Salarial: <select name="Nivel_Salarial">
-                {% for data in dataNivelSalarial %}
-                    <option>{{data.Codigo}}</option>
-                {% endfor %}
-            </select></br>
-            EstadoTrabajador: <input type="text" class="form-control" id="EstadoTrabajador" name="EstadoTrabajador"></br>
-            Tipo_Contrato <select name="Tipo_Contrato">
-                {% for data in dataTipoContrato %}
-                    <option>{{data.Descripcion}}</option>
-                {% endfor %}
-            </select></br>
-            Tipo_Cese: <select name="Tipo_Cese">
-                {% for data in dataTipoCese %}
-                    <option>{{data.Descripcion}}</option>
-                {% endfor %}
-            </select></br>
-            EstadoCivil: <select name="EstadoCivil">
-                {% for data in dataEstadoCivil %}
-                    <option>{{data.Descripcion}}</option>
-                {% endfor %}
-            </select></br>
-            TipodeComision: <select name="TipodeComision">
-                {% for data in dataTipoComision %}
-                    <option>{{data.Descripcion}}</option>
-                {% endfor %}
-            </select></br>
-            FechaNacimiento: <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento"></br>
-            FechaIngreso: <input type="date" class="form-control" id="FechaIngreso" name="FechaIngreso"></br>
-            FechaCese: <input type="date" class="form-control" id="FechaCese" name="FechaCese"></br>
-            PeriododeVacaciones: <select name="PeriododeVacaciones">
-                {% for data in dataPeriodoVacaciones %}
-                    <option>{{data.Descripcion}}</option>
-                {% endfor %}
-            </select></br>
-            FechaReingreso: <input type="date" class="form-control" id="FechaReingreso" name="FechaReingreso"></br>
-            Fecha_Ult_Actualizacion: <input type="date" class="form-control" id="Fecha_Ult_Actualizacion" name="Fecha_Ult_Actualizacion"></br>
-            EsReingreso: <select name="EsReingreso">
-                {% for data in dataEsReingreso %}
-                    <option>{{data.Descripcion}}</option>
-                {% endfor %}
-            </select></br>
-            Tipo_Cuenta: <select name="Tipo_Cuenta">
-                {% for data in dataTipoCuenta %}
-                    <option>{{data.Descripcion}}</option>
-                {% endfor %}
-            </select></br>
-            FormaCalculo13ro: <select name="FormaCalculo13ro">
-                {% for data in dataDecimoTerceroDecimoCuarto %}
-                    <option>{{data.Codigo}}</option>
-                {% endfor %}
-            </select></br>
-            FormaCalculo14ro: <select name="FormaCalculo14ro">
-                {% for data in dataDecimoTerceroDecimoCuarto %}
-                    <option>{{data.Codigo}}</option>
-                {% endfor %}
-            </select></br>
-            BoniComplementaria: <input type="text" class="form-control" id="BoniComplementaria" name="BoniComplementaria"></br>
-            BoniEspecial: <input type="text" class="form-control" id="BoniEspecial" name="BoniEspecial"></br>
-            Remuneracion_Minima: <input type="text" class="form-control" id="Remuneracion_Minima" name="Remuneracion_Minima"></br>
-            Fondo_Reserva: <input type="text" class="form-control" id="Fondo_Reserva" name="Fondo_Reserva"></br>
-            Mensaje: <input type="text" class="form-control" id="Mensaje" name="Mensaje"></br>
+            <div class="box1">
+                <label id="COMP_Codigo" name="COMP_Codigo">COMP_Codigo:</label> 
+                <input type="text" class="form-control" id="COMP_Codigo" name="COMP_Codigo" value="{{id}}" disabled></form>
+                <label id="Tipo_trabajador" name="Tipo_trabajador">Tipo de trabajador:</label>
+                <select class="form-control" id="Tipo_trabajador" name="Tipo_trabajador">
+                    {% for tipo in dataTipoTrabajador %}
+                        <option value="{{tipo.id}}">{{tipo.Codigo}}</option>
+                    {% endfor %}
+                </select>
+                <label id="Apellido_Paterno" name="Apellido_Paterno">Apellido Paterno:</label>
+                <input type="text" class="form-control" id="Apellido_Paterno" name="Apellido_Paterno">
+                <label id="Apellido_Materno" name="Apellido_Materno">Apellido Materno:</label>
+                <input type="text" class="form-control" id="Apellido_Materno" name="Apellido_Materno">
+                <label id="Nombres" name="Nombres">Nombres:</label>
+                <input type="text" class="form-control" id="Nombres" name="Nombres"> 
+                <label id="Identificacion" name="Identificacion">Identificacion:</label>
+                <input type="text" class="form-control" id="Identificacion" name="Identificacion">
+                <label id="Entidad_Bancaria" name="Entidad_Bancaria">Entidad Bancaria:</label>
+                <input type="text" class="form-control" id="Entidad_Bancaria" name="Entidad_Bancaria">
+                <label id="CarnetIESS" name="CarnetIESS">Carnet IESS:</label>
+                <input type="text" class="form-control" id="CarnetIESS" name="CarnetIESS">
+                <label id="Direccion" name="Direccion">Direccion:</label>
+                <input type="text" class="form-control" id="Direccion" name="Direccion">
+                <label id="Telefono_Fijo" name="Telefono_Fijo">Telefono Fijo:</label>
+                <input type="text" class="form-control" id="Telefono_Fijo" name="Telefono_Fijo">
+                <label id="Telefono_Movil" name="Telefono_Movil">Telefono Movil:</label>
+                <input type="text" class="form-control" id="Telefono_Movil" name="Telefono_Movil">
+                <label id="Genero" name="Genero">Genero:</label>
+                <select class="form-control" id="Genero" name="Genero">
+                    {% for genero in dataGenero %}
+                        <option value="{{genero.id}}">{{genero.Codigo}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="box2">
+                <label id="Nro_Cuenta_Bancaria" name="Nro_Cuenta_Bancaria">Nro Cuenta Bancaria:</label>
+                <input type="text" class="form-control" id="Nro_Cuenta_Bancaria" name="Nro_Cuenta_Bancaria">
+                <label id="Codigo_Categoria_Ocupacion" name="Codigo_Categoria_Ocupacion">Codigo Categoria Ocupacion:</label>
+                <select class="form-control" id="Codigo_Categoria_Ocupacion" name="Codigo_Categoria_Ocupacion">
+                    {% for categoria in dataCategoriaOcupacional %}
+                        <option value="{{categoria.id}}">{{categoria.Descripcion}}</option>
+                    {% endfor %}
+                </select>
+                <label id="Ocupacion" name="Ocupacion">Ocupacion:</label>
+                <select class="form-control" id="Ocupacion" name="Ocupacion">
+                    {% for ocupacion in dataOcupaciones %}
+                        <option value="{{ocupacion.id}}">{{ocupacion.Descripcion}}</option>
+                    {% endfor %}
+                </select>
+                <label id="Centro_Costos" name="Centro_Costos">Centro de Costos:</label>
+                <select class="form-control" id="Centro_Costos" name="Centro_Costos">
+                    {% for centro in datacentroCostos %}
+                        <option value="{{centro.id}}">{{centro.NombreCentroCostos}}</option>
+                    {% endfor %}
+                </select>
+                <label id="Nivel_Salarial" name="Nivel_Salarial">Nivel Salarial:</label>
+                <select class="form-control" id="Nivel_Salarial" name="Nivel_Salarial">
+                    {% for nivel in dataNivelSalarial %}
+                        <option value="{{nivel.id}}">{{nivel.Descripcion}}</option>
+                    {% endfor %}
+                </select>
+                <label id="EstadoTrabajador" name="EstadoTrabajador">Estado del Trabajador:</label>
+                <input type="text" class="form-control" id="EstadoTrabajador" name="EstadoTrabajador">
+                <label id="Tipo_Contrato" name="Tipo_Contrato">Tipo de Contrato:</label>
+                <select class="form-control" id="Tipo_Contrato" name="Tipo_Contrato">
+                    {% for contrato in dataTipoContrato %}
+                        <option value="{{contrato.id}}">{{contrato.Descripcion}}</option>
+                    {% endfor %}
+                </select>
+                <label id="Tipo_Cese" name="Tipo_Cese">Tipo de Cese:</label>
+                <select class="form-control" id="Tipo_Cese" name="Tipo_Cese">
+                    {% for cese in dataTipoCese %}
+                        <option value="{{cese.id}}">{{cese.Descripcion}}</option>
+                    {% endfor %}
+                </select>
+                <label id="EstadoCivil" name="EstadoCivil">Estado Civil:</label>
+                <select class="form-control" id="EstadoCivil" name="EstadoCivil">
+                    {% for estado in dataEstadoCivil %}
+                        <option value="{{estado.id}}">{{estado.Descripcion}}</option>
+                    {% endfor %}
+                </select>
+                <label id="TipodeComision" name="TipodeComision">Tipo de Comision:</label>
+                <select class="form-control" id="TipodeComision" name="TipodeComision">
+                    {% for comision in dataTipoComision %}
+                        <option value="{{comision.id}}">{{comision.Codigo}}</option>
+                    {% endfor %}
+                </select>
+                <label id="FechaNacimiento" name="FechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento">
+                <label id="FechaIngreso" name="FechaIngreso">Fecha de Ingreso:</label>
+                <input type="date" class="form-control" id="FechaIngreso" name="FechaIngreso">
+            </div>
+
+            <div class="box3">
+                <label id="FechaCese" name="FechaCese">Fecha de Cese:</label>
+                <input type="date" class="form-control" id="FechaCese" name="FechaCese">
+                <label id="PeriododeVacaciones" name="PeriododeVacaciones">Periodo de Vacaciones:</label>
+                <select class="form-control" id="PeriododeVacaciones" name="PeriododeVacaciones">
+                    {% for periodo in dataPeriodoVacaciones %}
+                        <option value="{{periodo.id}}">{{periodo.Codigo}}</option>
+                    {% endfor %}
+                </select>
+                <label id="FechaReingreso" name="FechaReingreso">Fecha de Reingreso:</label>
+                <input type="date" class="form-control" id="FechaReingreso" name="FechaReingreso">
+                <label id="Fecha_Ult_Actualizacion" name="Fecha_Ult_Actualizacion">Fecha Ultima Actualizacion:</label>
+                <input type="date" class="form-control" id="Fecha_Ult_Actualizacion" name="Fecha_Ult_Actualizacion">
+                <label id="EsReingreso" name="EsReingreso">Es Reingreso:</label>
+                <select class="form-control" id="EsReingreso" name="EsReingreso">
+                    {% for reingreso in dataEsReingreso %}
+                        <option value="{{reingreso.id}}">{{reingreso.Descripcion}}</option>
+                    {% endfor %}
+                </select>
+                <label id="Tipo_Cuenta" name="Tipo_Cuenta">Tipo de Cuenta:</label>
+                <select class="form-control" id="Tipo_Cuenta" name="Tipo_Cuenta">
+                    {% for cuenta in dataTipoCuenta %}
+                        <option value="{{cuenta.id}}">{{cuenta.Descripcion}}</option>
+                    {% endfor %}
+                </select>
+                <label id="FormaCalculo13ro" name="FormaCalculo13ro">Forma de Calculo 13ro:</label>
+                <select class="form-control" id="FormaCalculo13ro" name="FormaCalculo13ro">
+                    {% for calculo in dataDecimoTerceroDecimoCuarto %}
+                        <option value="{{calculo.id}}">{{calculo.Descripcion}}</option>
+                    {% endfor %}
+                </select>
+                <label id="FormaCalculo14to" name="FormaCalculo14to">Forma de Calculo 14to:</label>
+                <select class="form-control" id="FormaCalculo14to" name="FormaCalculo14to">
+                    {% for calculo in dataDecimoTerceroDecimoCuarto %}
+                        <option value="{{calculo.id}}">{{calculo.Descripcion}}</option>
+                    {% endfor %}
+                </select>
+                <label id="BoniComplementaria" name="BoniComplementaria">Boni Complementaria:</label>
+                <input type="text" class="form-control" id="BoniComplementaria" name="BoniComplementaria" placeholder="Entero">
+                <label id="BoniEspecial" name="BoniEspecial" >Boni Especial:</label>
+                <input type="text" class="form-control" id="BoniEspecial" name="BoniEspecial" placeholder="Entero">
+                <label id="Remuneracion_Minima" name="Remuneracion_Minima">Remuneracion Minima:</label>
+                <input type="text" class="form-control" id="Remuneracion_Minima" name="Remuneracion_Minima" placeholder="Entero">
+                <label id="Fondo_Reserva" name="Fondo_Reserva">Fondo de Reserva:</label>
+                <input type="text" class="form-control" id="Fondo_Reserva" name="Fondo_Reserva">
+                <label id="Mensaje" name="Mensaje">Mensaje:</label>
+                <input type="text" class="form-control" id="Mensaje" name="Mensaje">
+            </div>
+            
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
     </div>
