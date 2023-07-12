@@ -428,6 +428,10 @@ def PagTrabajadoresCreate (request, id):
     dataCentroCostos = url14.json()
     url15 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CategoriaOcupacional")
     dataCategoriaOcupacional = url15.json()
+    url16 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/FondoReserva")
+    dataFondoReserva = url16.json()
+    url17 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/EstadoTrabajador")
+    dataEstadoTrabajador = url17.json()
 
     return render(request, 'agregarTrabajador.html',{
         'id': id,
@@ -446,6 +450,8 @@ def PagTrabajadoresCreate (request, id):
         'dataEsReingreso': dataEsReingreso,
         'dataTipoCuenta': dataTipoCuenta,
         'dataDecimoTerceroDecimoCuarto': dataDecimoTerceroDecimoCuarto,
+        'dataFondoReserva': dataFondoReserva,
+        'dataEstadoTrabajador': dataEstadoTrabajador,
     })
 
 def trabajadoresPost(request):
@@ -472,6 +478,14 @@ def trabajadoresPost(request):
     ##Buscar genero el codigo
     url3 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/Genero")
     dataGenero = url3.json()
+
+    ##Buscar Fondo el codigo
+    url16 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/FondoReserva")
+    dataFondoReserva = url16.json()
+
+    ##Buscar estado del trabajador
+    url17 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/EstadoTrabajador")
+    dataEstadoTrabajador = url17.json()
 
     if request.method == "POST":
         COMP_Codigo = request.POST['COMP_Codigo']
@@ -546,6 +560,14 @@ def trabajadoresPost(request):
             if i['Descripcion'] == Genero:
                 Genero = i['Codigo']
         
+        for i in dataFondoReserva:
+            if i['Descripcion'] == Fondo_Reserva:
+                Fondo_Reserva = i['Codigo']
+
+        for i in dataEstadoTrabajador:
+            if i['Descripcion'] == EstadoTrabajador:
+                EstadoTrabajador = i['Codigo']
+
         requests.post("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorInsert?COMP_Codigo="+COMP_Codigo+
                       "&Tipo_trabajador="+Tipo_trabajador+"&Apellido_Paterno="+Apellido_Paterno+"&Apellido_Materno="+
                       Apellido_Materno+"&Nombres="+Nombres+"&Identificacion="+Identificacion+"&Entidad_Bancaria="+

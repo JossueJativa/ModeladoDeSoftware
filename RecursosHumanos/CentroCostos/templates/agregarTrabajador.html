@@ -75,7 +75,11 @@
                         {% endfor %}
                     </select>
                     <label id="EstadoTrabajador" name="EstadoTrabajador">Estado del Trabajador:</label>
-                    <input type="text" class="form-control" id="EstadoTrabajador" name="EstadoTrabajador">
+                    <select class="form-control" id="EstadoTrabajador" name="EstadoTrabajador">
+                        {% for estado in dataEstadoTrabajador %}
+                            <option value="{{estado.id}}">{{estado.Descripcion}}</option>
+                        {% endfor %}
+                    </select>
                     <label id="Tipo_Contrato" name="Tipo_Contrato">Tipo de Contrato:</label>
                     <select class="form-control" id="Tipo_Contrato" name="Tipo_Contrato">
                         {% for contrato in dataTipoContrato %}
@@ -150,7 +154,11 @@
                     <label id="Remuneracion_Minima" name="Remuneracion_Minima">Remuneracion Minima:</label>
                     <input type="text" class="form-control" id="Remuneracion_Minima" name="Remuneracion_Minima" placeholder="Entero">
                     <label id="Fondo_Reserva" name="Fondo_Reserva">Fondo de Reserva:</label>
-                    <input type="text" class="form-control" id="Fondo_Reserva" name="Fondo_Reserva">
+                    <select class="form-control" id="Fondo_Reserva" name="Fondo_Reserva">
+                        {% for fondo in dataFondoReserva %}
+                            <option value="{{fondo.id}}">{{fondo.Descripcion}}</option>
+                        {% endfor %}
+                    </select>
                     <label id="Mensaje" name="Mensaje">Mensaje:</label>
                     <input type="text" class="form-control" id="Mensaje" name="Mensaje">
                 </div>
