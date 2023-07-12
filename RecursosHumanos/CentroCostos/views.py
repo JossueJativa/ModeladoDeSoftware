@@ -449,9 +449,6 @@ def PagTrabajadoresCreate (request, id):
     })
 
 def trabajadoresPost(request):
-    url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorSelect?sucursal="+COMP_Codigo)
-    data = url.json()
-
     ##Buscar codigo categoria ocupacional
     url15 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CategoriaOcupacional")
     dataCategoriaOcupacional = url15.json()
@@ -471,6 +468,10 @@ def trabajadoresPost(request):
     ##Buscar forma calculo 13
     url13 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/DecimoTerceroDecimoCuarto")
     dataDecimoTerceroDecimoCuarto = url13.json()
+
+    ##Buscar genero el codigo
+    url3 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/Genero")
+    dataGenero = url3.json()
 
     if request.method == "POST":
         COMP_Codigo = request.POST['COMP_Codigo']
@@ -511,7 +512,8 @@ def trabajadoresPost(request):
         Fondo_Reserva = request.POST['Fondo_Reserva']
         Mensaje = request.POST['Mensaje']
 
-        
+        url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorSelect?sucursal="+COMP_Codigo)
+        data = url.json()
 
         for i in dataCategoriaOcupacional:
             if i['Descripcion'] == Codigo_Categoria_Ocupacion:
@@ -527,9 +529,8 @@ def trabajadoresPost(request):
                 PeriododeVacaciones = i['Codigo']
 
         
-
         for i in dataCentroCostos:
-            if i['Descripcion'] == Centro_Costos:
+            if i['NombreCentroCostos'] == Centro_Costos:
                 Centro_Costos = i['Codigo']
 
         for i in dataDecimoTerceroDecimoCuarto:
@@ -540,6 +541,10 @@ def trabajadoresPost(request):
         for i in dataDecimoTerceroDecimoCuarto:
             if i['Descripcion'] == FormaCalculo14to:
                 FormaCalculo14to = i['Codigo']
+
+        for i in dataGenero:
+            if i['Descripcion'] == Genero:
+                Genero = i['Codigo']
         
         requests.post("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorInsert?COMP_Codigo="+COMP_Codigo+
                       "&Tipo_trabajador="+Tipo_trabajador+"&Apellido_Paterno="+Apellido_Paterno+"&Apellido_Materno="+
@@ -560,7 +565,7 @@ def trabajadoresPost(request):
 
         return render(request, 'infoTrabajador.html',{
             'data': data,
-            'id': id,
+            'id': COMP_Codigo,
         })
     
 def trabajadoresupdate (request, id, id2):

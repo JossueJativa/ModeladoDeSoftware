@@ -14,7 +14,7 @@
             {% csrf_token %}
                 <div class="box1">
                     <label id="COMP_Codigo" name="COMP_Codigo">COMP_Codigo:</label> 
-                    <input type="text" class="form-control" id="COMP_Codigo" name="COMP_Codigo" value="{{id}}" disabled></br>
+                    <input type="text" class="form-control" id="COMP_Codigo" name="COMP_Codigo" value="{{id}}"></br>
                     <label id="Tipo_trabajador" name="Tipo_trabajador">Tipo de trabajador:</label>
                     <select class="form-control" id="Tipo_trabajador" name="Tipo_trabajador">
                         {% for tipo in dataTipoTrabajador %}
@@ -42,7 +42,7 @@
                     <label id="Genero" name="Genero">Genero:</label>
                     <select class="form-control" id="Genero" name="Genero">
                         {% for genero in dataGenero %}
-                            <option value="{{genero.id}}">{{genero.Codigo}}</option>
+                            <option value="{{genero.id}}">{{genero.Descripcion}}</option>
                         {% endfor %}
                     </select>
                 </div>

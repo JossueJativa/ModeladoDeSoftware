@@ -39,7 +39,7 @@
                         {% csrf_token %}
                         <td>
                             <button type="submit" class="btn btn-danger">Eliminar<img src="https://i.ibb.co/JmRz9Kh/delete-2-svgrepo-com.png" height="25px" width="25px"/></button>
-                            <a class="btn btn-success" href="{%url 'editCentroCostos' datos.Codigo%}">Editar<img src="https://i.ibb.co/yS3QgtW/edit-svgrepo-com.png" height="25px" width="25px"/></a>
+                            <button class="btn btn-success" href="{%url 'editCentroCostos' datos.Codigo%}">Editar<img src="https://i.ibb.co/yS3QgtW/edit-svgrepo-com.png" height="25px" width="25px"/></button>
                         </td>
                     </form>
                 </tr>
