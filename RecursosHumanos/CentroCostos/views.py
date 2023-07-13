@@ -829,7 +829,7 @@ def trabajadoresupdate (request, id, id2):
             if i['Descripcion'] == EsReingreso:
                 EsReingreso = i['Codigo']
         
-        requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorInsert?COMP_Codigo="+COMP_Codigo+
+        requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorUpdate?COMP_Codigo="+COMP_Codigo+
                       "&Tipo_trabajador="+Tipo_trabajador+"&Apellido_Paterno="+Apellido_Paterno+"&Apellido_Materno="+
                       Apellido_Materno+"&Nombres="+Nombres+"&Identificacion="+Identificacion+"&Entidad_Bancaria="+
                       Entidad_Bancaria+"&CarnetIESS="+CarnetIESS+"&Direccion="+Direccion+"&Telefono_Fijo="+
