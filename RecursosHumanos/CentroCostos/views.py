@@ -70,8 +70,7 @@ def pushCentroCostos (request):
         descripcion = request.POST['descripcion']
 
         try:
-            url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosInsert?codigocentrocostos="+codigo+"&descripcioncentrocostos="+descripcion)
-            data = url.json()
+            url = requests.put("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosInsert?codigocentrocostos="+codigo+"&descripcioncentrocostos="+descripcion)
         except:
             return render(request, 'exceptiondentro.html', {
                 'message': "Error al insertar el centro de costos"

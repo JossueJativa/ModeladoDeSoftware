@@ -69,8 +69,8 @@
         {% csrf_token %}
         <section class="form-login">
             <h1>Login</h1>
-            <input class="control" type="text" name="username" placeholder="Usuario"><br>
-            <input class="control" type="password" name="password" placeholder="Contraseña"><br>
+            <input class="control" type="text" name="username" placeholder="Usuario" maxlength="4"><br>
+            <input class="control" type="password" name="password" placeholder="Contraseña" maxlength="5"><br>
             {% if message %}
                 <a style="color: red;">{{message}}</a>
             {% endif %}
