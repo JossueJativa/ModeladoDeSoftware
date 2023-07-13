@@ -455,6 +455,14 @@ def PagTrabajadoresCreate (request, id):
     })
 
 def trabajadoresPost(request):
+    ##Buscar tipo trabajador 
+    url2 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoTrabajador")
+    dataTipoTrabajador = url2.json()
+
+    ##Buscar por genero 
+    url3 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/Genero")
+    dataGenero = url3.json()
+
     ##Buscar codigo categoria ocupacional
     url15 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CategoriaOcupacional")
     dataCategoriaOcupacional = url15.json()
@@ -466,6 +474,9 @@ def trabajadoresPost(request):
     #Buscar codigo periodo de vacaiones
     url10 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/PeriodoVacaciones")
     dataPeriodoVacaciones = url10.json()
+
+    url5 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/NivelSalarial")
+    dataNivelSalarial = url5.json()
 
     ##Buscar codigo de Centro de Costos
     url14 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/CentroCostosSelect")
@@ -486,6 +497,24 @@ def trabajadoresPost(request):
     ##Buscar estado del trabajador
     url17 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/EstadoTrabajador")
     dataEstadoTrabajador = url17.json()
+
+    url6 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoContrato")
+    dataTipoContrato = url6.json()
+
+    url7 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoCese")
+    dataTipoCese = url7.json()
+
+    url8 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/EstadoCivil")
+    dataEstadoCivil = url8.json()
+
+    url9 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoComision")
+    dataTipoComision = url9.json()
+
+    url11 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/EsReingreso")
+    dataEsReingreso = url11.json()
+
+    url12 = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TipoCuenta")
+    dataTipoCuenta = url12.json()
 
     if request.method == "POST":
         COMP_Codigo = request.POST['COMP_Codigo']
@@ -529,19 +558,29 @@ def trabajadoresPost(request):
         url = requests.get("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorSelect?sucursal="+COMP_Codigo)
         data = url.json()
 
+        for i in dataTipoTrabajador:
+            if i['Codigo'] == Tipo_trabajador:
+                Tipo_trabajador = i['Descripcion']
+
+        for i in dataGenero:
+            if i['Descripcion'] == Genero:
+                Genero = i['Codigo']
+        
         for i in dataCategoriaOcupacional:
             if i['Descripcion'] == Codigo_Categoria_Ocupacion:
                 Codigo_Categoria_Ocupacion = i['Codigo']
-
 
         for i in dataOcupaciones:
             if i['Descripcion'] == Ocupacion:
                 Ocupacion = i['Codigo']
 
+        for i in dataNivelSalarial:
+            if i['Descripcion'] == Nivel_Salarial:
+                Nivel_Salarial = i['Codigo']
+
         for i in dataPeriodoVacaciones:
             if i['Descripcion'] == PeriododeVacaciones:
                 PeriododeVacaciones = i['Codigo']
-
         
         for i in dataCentroCostos:
             if i['NombreCentroCostos'] == Centro_Costos:
@@ -567,6 +606,30 @@ def trabajadoresPost(request):
         for i in dataEstadoTrabajador:
             if i['Descripcion'] == EstadoTrabajador:
                 EstadoTrabajador = i['Codigo']
+
+        for i in dataTipoContrato:
+            if i['Descripcion'] == Tipo_Contrato:
+                Tipo_Contrato = i['Codigo']
+
+        for i in dataTipoCese:
+            if i['Descripcion'] == Tipo_Cese:
+                Tipo_Cese = i['Codigo']
+
+        for i in dataEstadoCivil:
+            if i['Descripcion'] == EstadoCivil:
+                EstadoCivil = i['Codigo']
+
+        for i in dataTipoComision:
+            if i['Codigo'] == TipodeComision:
+                TipodeComision = i['Descripcion']
+
+        for i in dataTipoCuenta:
+            if i['Descripcion'] == Tipo_Cuenta:
+                Tipo_Cuenta = i['Codigo']
+
+        for i in dataEsReingreso:
+            if i['Descripcion'] == EsReingreso:
+                EsReingreso = i['Codigo']
 
         requests.post("http://apiservicios.ecuasolmovsa.com:3009/api/Varios/TrabajadorInsert?COMP_Codigo="+COMP_Codigo+
                       "&Tipo_trabajador="+Tipo_trabajador+"&Apellido_Paterno="+Apellido_Paterno+"&Apellido_Materno="+
